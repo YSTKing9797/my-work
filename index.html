@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知識の森</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="text-normal">
+
+    <!-- 👑 ヘッダー看板 -->
+    <header class="main-header">
+
+        <!-- 左側：三本線メニューボタン -->
+        <button
+            class="menu-trigger-btn"
+            onclick="playSound('click'); toggleSidebar();"
+        >
+            ☰
+        </button>
+
+        <div class="header-title-area">
+            <h1>知識の森</h1>
+            <p class="subtitle">💡 新しいことを知る面白さを届ける</p>
+        </div>
+
+    </header>
+
+
+    <!-- 🌿 サイドメニュー -->
+    <div id="sidebar-menu" class="sidebar">
+
+        <div class="sidebar-header">
+            <h3>⚙️ サイト設定</h3>
+
+            <button
+                class="close-sidebar-btn"
+                onclick="playSound('click'); toggleSidebar();"
+            >
+                ×
+            </button>
+        </div>
+
+
+        <div class="sidebar-content">
+
+            <!-- 🔤 文字の大きさ -->
+            <p class="menu-section-title">文字の大きさ</p>
+
+            <div class="setting-row">
+
+                <button
+                    class="setting-btn"
+                    onclick="playSound('click'); changeTextSize('small');"
+                >
+                    小
+                </button>
+
+                <button
+                    class="setting-btn active"
+                    onclick="playSound('click'); changeTextSize('normal');"
+                >
+                    標準
+                </button>
+
+                <button
+                    class="setting-btn"
+                    onclick="playSound('click'); changeTextSize('large');"
+                >
+                    大
+                </button>
+
+            </div>
+
+
+            <!-- 🔊 効果音 -->
+            <p class="menu-section-title">効果音の設定</p>
+
+            <div class="setting-row">
+
+                <button
+                    id="sound-on-btn"
+                    class="setting-btn active"
+                    onclick="setSound(true)"
+                >
+                    ON
+                </button>
+
+                <button
+                    id="sound-off-btn"
+                    class="setting-btn"
+                    onclick="setSound(false)"
+                >
+                    OFF
+                </button>
+
+            </div>
+
+
+            <!-- 🔄 記事の並び替え -->
+            <p class="menu-section-title">記事の並び替え</p>
+
+            <button
+                class="sidebar-menu-item"
+                onclick="playSound('click'); sortArticles('new');"
+            >
+                🕒 新しい順に並べる
+            </button>
+
+            <button
+                class="sidebar-menu-item"
+                onclick="playSound('click'); sortArticles('old');"
+            >
+                ⏳ 古い順に並べる
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- サイドメニュー背景 -->
+    <div
+        id="sidebar-overlay"
+        class="overlay-shadow"
+        onclick="toggleSidebar()"
+    ></div>
+
+
+    <div class="container">
+
+        <!-- =========================
+             1. 一覧ページ
+        ========================== -->
+        <div id="main-page"></div>
+
+
+        <!-- =========================
+             2. 詳細ページ
+        ========================== -->
+        <div
+            id="detail-page"
+            class="detail-page-content"
+            style="display: none;"
+        >
+
+            <h2
+                id="detail-title"
+                class="detail-title"
+            >
+                記事タイトル
+            </h2>
+
+
+            <div
+                id="detail-image"
+                class="detail-image"
+            >
+                📸 イメージ画像
+            </div>
+
+
+            <div
+                id="detail-text"
+                class="detail-text"
+            >
+                記事の本文
+            </div>
+
+
+            <!-- =========================
+                 ❓ クイズエリア
+            ========================== -->
+            <div id="quiz-area">
+
+                <!-- クイズ開始画面 -->
+                <div id="quiz-start-view">
+
+                    <button
+                        class="more-btn"
+                        onclick="playSound('click'); startQuizGame();"
+                    >
+                        💡 この記事のクイズ（全5問）に挑戦する！
+                    </button>
+
+                </div>
+
+
+                <!-- クイズ画面 -->
+                <div
+                    id="quiz-game-view"
+                    style="display: none;"
+                >
+
+                    <div
+                        id="quiz-progress"
+                        class="quiz-progress"
+                    >
+                        第 1 問 / 全 5 問
+                    </div>
+
+
+                    <h3 id="quiz-question">
+                        問題文
+                    </h3>
+
+
+                    <!-- ⭕❌ 正誤表示 -->
+                    <div
+                        id="quiz-feedback"
+                        class="quiz-feedback"
+                    ></div>
+
+
+                    <div
+                        class="quiz-options"
+                        id="quiz-options-container"
+                    >
+                        <!-- JavaScriptでボタンを作成 -->
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     クイズ結果画面
+                ========================== -->
+                <div
+                    id="quiz-result-view"
+                    style="display: none;"
+                >
+
+                    <div
+                        id="quiz-result-icon"
+                        class="quiz-result-icon"
+                    >
+                        🎉
+                    </div>
+
+                    <h3
+                        id="quiz-result-title"
+                        class="quiz-result-title"
+                    >
+                        クイズ終了！
+                    </h3>
+
+                    <p
+                        id="quiz-result-score"
+                        class="quiz-result-score"
+                    >
+                        5 / 5
+                    </p>
+
+                    <button
+                        class="more-btn"
+                        onclick="playSound('click'); restartQuizGame();"
+                    >
+                        🔄 もう一度挑戦する
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 一覧に戻る
+            ========================== -->
+            <div class="back-btn-wrapper">
+
+                <button
+                    class="back-btn"
+                    onclick="playSound('click'); goToMainPage();"
+                >
+                    一覧に戻る
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         🎉 お祝い演出
+    ========================== -->
+    <div
+        id="celebration-overlay"
+        onclick="closeCelebration()"
+    >
+
+        <div
+            class="celebration-title"
+            id="celebration-text"
+        >
+            🎉 全問正解！おめでとう！ 🎉
+        </div>
+
+        <p
+            style="
+                font-size: 20px;
+                color: #666;
+                margin-top: 20px;
+            "
+        >
+            画面をクリックして閉じる
+        </p>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
