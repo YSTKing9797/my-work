@@ -62,17 +62,12 @@ body.text-large p {
 .main-header {
     background: linear-gradient(135deg, #81d1f5, #4faedb);
     color: white;
-
     display: flex;
     align-items: center;
-
     padding: 20px 30px;
     margin: 20px;
-
     border-radius: 20px;
-
     border: 2px solid rgba(255, 255, 255, 0.4);
-
     box-shadow:
         0 10px 25px rgba(79, 174, 219, 0.25),
         inset 0 2px 4px rgba(255, 255, 255, 0.3);
@@ -89,12 +84,9 @@ body.text-large p {
 .main-header h1 {
     font-size: 32px;
     margin: 0;
-
     letter-spacing: 4px;
-
     text-shadow:
         2px 3px 6px rgba(0, 0, 0, 0.15);
-
     font-weight: bold;
 }
 
@@ -113,13 +105,9 @@ body.text-large p {
 .menu-trigger-btn {
     background: none;
     border: none;
-
     color: white;
-
     font-size: 32px;
-
     cursor: pointer;
-
     padding: 10px;
 }
 
@@ -130,24 +118,16 @@ body.text-large p {
 
 .sidebar {
     position: fixed;
-
     top: 0;
     left: -300px;
-
     width: 260px;
     height: 100%;
-
     background-color: white;
-
     box-shadow:
         4px 0 15px rgba(0, 0, 0, 0.1);
-
     z-index: 2000;
-
     padding: 20px;
-
     transition: left 0.3s ease;
-
     color: #333333;
 }
 
@@ -159,13 +139,9 @@ body.text-large p {
 
 .sidebar-header {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     border-bottom: 1px solid #e2e8f0;
-
     padding-bottom: 10px;
 }
 
@@ -178,13 +154,9 @@ body.text-large p {
 
 .close-sidebar-btn {
     background: none;
-
     border: none;
-
     font-size: 24px;
-
     cursor: pointer;
-
     color: #aaa;
 }
 
@@ -195,39 +167,25 @@ body.text-large p {
 
 .menu-section-title {
     font-size: 12px;
-
     color: #a0aec0;
-
     font-weight: bold;
-
     margin-top: 25px;
     margin-bottom: 8px;
-
     letter-spacing: 1px;
 }
 
 
 .sidebar-menu-item {
     display: block;
-
     width: 100%;
-
     text-align: left;
-
     background: none;
-
     border: none;
-
     padding: 12px 10px;
-
     font-size: 15px;
-
     cursor: pointer;
-
     color: #333;
-
     border-radius: 6px;
-
     margin-bottom: 5px;
 }
 
@@ -243,30 +201,20 @@ body.text-large p {
 
 .setting-row {
     display: flex;
-
     gap: 8px;
-
     margin-bottom: 10px;
 }
 
 
 .setting-btn {
     flex: 1;
-
     background-color: #edf2f7;
-
     border: 1px solid #e2e8f0;
-
     padding: 8px;
-
     font-size: 14px;
-
     font-weight: bold;
-
     border-radius: 6px;
-
     cursor: pointer;
-
     color: #4a5568;
 }
 
@@ -278,9 +226,7 @@ body.text-large p {
 
 .setting-btn.active {
     background-color: #3182ce;
-
     color: white;
-
     border-color: #3182ce;
 }
 
@@ -291,17 +237,12 @@ body.text-large p {
 
 .overlay-shadow {
     display: none;
-
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     background-color: rgba(0, 0, 0, 0.4);
-
     z-index: 1500;
 }
 
@@ -317,24 +258,17 @@ body.text-large p {
 
 .container {
     max-width: 800px;
-
     margin: 0 auto;
-
     padding: 10px 20px 20px 20px;
 }
 
 
 .zatugaku-box {
     background-color: #ffffff;
-
     border-bottom: 2px solid #f0f0f0;
-
     padding: 30px;
-
     margin-bottom: 30px;
-
     border-radius: 12px;
-
     box-shadow:
         0 4px 10px rgba(0, 0, 0, 0.02);
 }
@@ -342,75 +276,67 @@ body.text-large p {
 
 .article-top {
     display: flex;
-
     gap: 24px;
 }
 
 
 .article-image-area {
     flex: 1;
-
     position: relative;
 }
 
 
 .badge {
     background-color: #e53e3e;
-
     color: white;
-
     font-size: 12px;
-
     font-weight: bold;
-
     padding: 4px 10px;
-
     border-radius: 4px;
-
     position: absolute;
-
     top: 10px;
     left: 10px;
-
     z-index: 10;
 }
 
 
 .article-image-placeholder {
     background-color: #edf2f7;
-
     height: 200px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     color: #718096;
-
     border-radius: 8px;
-
     font-size: 14px;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   🖼️ 記事画像
+========================================= */
+
+.article-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
 }
 
 
 .article-info-area {
     flex: 1.5;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: space-between;
 }
 
 
 .article-summary {
     font-size: 14px;
-
     color: #666;
-
     margin: 10px 0;
 }
 
@@ -421,28 +347,19 @@ body.text-large p {
 
 .btn-wrapper {
     text-align: right;
-
     margin-top: 15px;
 }
 
 
 .more-btn {
     background-color: #3182ce;
-
     color: white;
-
     border: none;
-
     padding: 10px 24px;
-
     font-size: 14px;
-
     font-weight: bold;
-
     border-radius: 4px;
-
     cursor: pointer;
-
     transition: background 0.2s;
 }
 
@@ -458,45 +375,41 @@ body.text-large p {
 
 .detail-page-content {
     background-color: #ffffff;
-
     padding: 30px;
-
     border-radius: 16px;
-
     box-shadow:
         0 4px 20px rgba(0, 0, 0, 0.05);
-
     margin-top: 20px;
 }
 
 
 .detail-title {
     color: #111;
-
     border-bottom: 3px solid #4faedb;
-
     padding-bottom: 12px;
-
     margin-top: 0;
 }
 
 
 .detail-image {
     background-color: #edf2f7;
-
     height: 250px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     color: #718096;
-
     border-radius: 8px;
-
     margin: 20px 0;
+    overflow: hidden;
+}
+
+
+.detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
 }
 
 
@@ -515,13 +428,9 @@ body.text-large p {
             transparent 60%,
             rgba(255, 235, 59, 0.8) 40%
         );
-
     background-repeat: no-repeat;
-
     background-size: 0% 100%;
-
     transition: background-size 1.2s ease-out;
-
     display: inline;
 }
 
@@ -537,53 +446,39 @@ body.text-large p {
 
 #quiz-area {
     background-color: #fff9e6;
-
     border: 2px dashed #ffb74d;
-
     padding: 25px;
-
     border-radius: 12px;
-
     text-align: center;
-
     margin-top: 40px;
 }
 
 
 #quiz-area h3 {
     margin-top: 0;
-
     color: #e65100;
 }
 
 
 .quiz-progress {
     font-size: 14px;
-
     color: #666;
-
     margin-bottom: 10px;
 }
 
 
 .quiz-options {
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 12px;
-
     margin-top: 20px;
 }
 
 
 .quiz-options .more-btn {
     width: 80%;
-
     margin: 5px 0;
 }
 
@@ -594,23 +489,14 @@ body.text-large p {
 
 .quiz-feedback {
     min-height: 55px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     font-size: 28px;
-
     font-weight: bold;
-
     margin: 10px 0;
-
     opacity: 0;
-
     transform: scale(0.7);
-
     transition:
         opacity 0.2s ease,
         transform 0.2s ease;
@@ -619,7 +505,6 @@ body.text-large p {
 
 .quiz-feedback.show {
     opacity: 1;
-
     transform: scale(1);
 }
 
@@ -640,27 +525,21 @@ body.text-large p {
 
 .quiz-result-icon {
     font-size: 60px;
-
     margin-bottom: 10px;
 }
 
 
 .quiz-result-title {
     font-size: 28px;
-
     color: #e65100;
-
     margin: 10px 0;
 }
 
 
 .quiz-result-score {
     font-size: 42px;
-
     font-weight: bold;
-
     color: #3182ce;
-
     margin: 10px 0 25px 0;
 }
 
@@ -671,34 +550,22 @@ body.text-large p {
 
 .back-btn-wrapper {
     margin-top: 40px;
-
     text-align: center;
-
     border-top: 1px dashed #e2e8f0;
-
     padding-top: 30px;
 }
 
 
 .back-btn {
     background-color: #6c757d;
-
     color: white;
-
     border: none;
-
     padding: 12px 35px;
-
     font-size: 15px;
-
     font-weight: bold;
-
     border-radius: 4px;
-
     cursor: pointer;
-
     transition: background 0.2s;
-
     display: inline-block;
 }
 
@@ -714,33 +581,20 @@ body.text-large p {
 
 #celebration-overlay {
     display: none;
-
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     background-color: rgba(255, 255, 255, 0.95);
-
     z-index: 3000;
-
     align-items: center;
-
     justify-content: center;
-
     flex-direction: column;
-
     font-size: 40px;
-
     font-weight: bold;
-
     color: #ff4d4d;
-
     text-align: center;
-
     cursor: pointer;
 }
 
@@ -748,7 +602,6 @@ body.text-large p {
 .celebration-title {
     animation:
         celebrationBounce 0.6s infinite alternate;
-
     text-shadow:
         2px 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -773,10 +626,8 @@ body.text-large p {
 
 .particle {
     position: absolute;
-
     animation:
         popEffect 1.5s ease-out forwards;
-
     font-size: 40px;
 }
 
@@ -788,7 +639,6 @@ body.text-large p {
             translate(0, 0)
             rotate(0deg)
             scale(0.5);
-
         opacity: 1;
     }
 
@@ -797,7 +647,6 @@ body.text-large p {
             translate(var(--x), var(--y))
             rotate(360deg)
             scale(1.6);
-
         opacity: 0;
     }
 
@@ -812,14 +661,12 @@ body.text-large p {
 
     .main-header {
         margin: 10px;
-
         padding: 15px;
     }
 
 
     .main-header h1 {
         font-size: 25px;
-
         letter-spacing: 2px;
     }
 
@@ -861,6 +708,26 @@ body.text-large p {
 
     .celebration-title {
         font-size: 30px;
+    }
+
+
+    /* スマホでも画像が画面からはみ出さない */
+    .article-image-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    .detail-image {
+        height: 200px;
+    }
+
+
+    .detail-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
 }
