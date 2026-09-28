@@ -64,7 +64,9 @@ const articlesData = [
 
         badgeColor: "#e53e3e",
 
-        image: "images/water.jpg",
+        // ✨ こう書き換えます！
+image: "water.jpg",
+
 
         date: "2026-09-27",
 
