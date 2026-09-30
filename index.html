@@ -1,19 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRIVIA</title>
 
-    <link rel="stylesheet" href="style.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>宇宙雑学</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 
 <body class="text-normal">
 
-    <!-- 👑 ヘッダー看板 -->
+
+    <!-- =========================================
+         🌌 動く宇宙背景
+    ========================================== -->
+
+    <div id="space-background">
+
+        <div class="nebula nebula-1"></div>
+        <div class="nebula nebula-2"></div>
+        <div class="nebula nebula-3"></div>
+
+        <div id="stars"></div>
+
+        <div id="shooting-stars"></div>
+
+        <div class="space-glow glow-1"></div>
+        <div class="space-glow glow-2"></div>
+
+    </div>
+
+
+    <!-- =========================================
+         👑 ヘッダー
+    ========================================== -->
+
     <header class="main-header">
 
-        <!-- 左側：三本線メニューボタン -->
         <button
             class="menu-trigger-btn"
             onclick="playSound('click'); toggleSidebar();"
@@ -21,19 +54,34 @@
             ☰
         </button>
 
+
         <div class="header-title-area">
-            <h1>TRIVIA</h1>
-            <p class="subtitle">💡 新しいことを知る面白さを届ける</p>
+
+            <h1>宇宙雑学</h1>
+
+            <p class="subtitle">
+                💡 新しいことを知る面白さを届ける
+            </p>
+
         </div>
 
     </header>
 
 
-    <!-- 🌿 サイドメニュー -->
-    <div id="sidebar-menu" class="sidebar">
+    <!-- =========================================
+         🌿 サイドメニュー
+    ========================================== -->
+
+    <div
+        id="sidebar-menu"
+        class="sidebar"
+    >
 
         <div class="sidebar-header">
-            <h3>⚙️ サイト設定</h3>
+
+            <h3>
+                ⚙️ サイト設定
+            </h3>
 
             <button
                 class="close-sidebar-btn"
@@ -41,13 +89,16 @@
             >
                 ×
             </button>
+
         </div>
 
 
         <div class="sidebar-content">
 
-            <!-- 🔤 文字の大きさ -->
-            <p class="menu-section-title">文字の大きさ</p>
+            <p class="menu-section-title">
+                文字の大きさ
+            </p>
+
 
             <div class="setting-row">
 
@@ -75,8 +126,10 @@
             </div>
 
 
-            <!-- 🔊 効果音 -->
-            <p class="menu-section-title">効果音の設定</p>
+            <p class="menu-section-title">
+                効果音の設定
+            </p>
+
 
             <div class="setting-row">
 
@@ -99,8 +152,10 @@
             </div>
 
 
-            <!-- 🔄 記事の並び替え -->
-            <p class="menu-section-title">記事の並び替え</p>
+            <p class="menu-section-title">
+                記事の並び替え
+            </p>
+
 
             <button
                 class="sidebar-menu-item"
@@ -108,6 +163,7 @@
             >
                 🕒 新しい順に並べる
             </button>
+
 
             <button
                 class="sidebar-menu-item"
@@ -117,10 +173,14 @@
             </button>
 
         </div>
+
     </div>
 
 
-    <!-- サイドメニュー背景 -->
+    <!-- =========================================
+         サイドメニュー背景
+    ========================================== -->
+
     <div
         id="sidebar-overlay"
         class="overlay-shadow"
@@ -128,17 +188,22 @@
     ></div>
 
 
+    <!-- =========================================
+         メインコンテナ
+    ========================================== -->
+
     <div class="container">
 
-        <!-- =========================
-             1. 一覧ページ
-        ========================== -->
+
+        <!-- 一覧ページ -->
+
         <div id="main-page"></div>
 
 
-        <!-- =========================
-             2. 詳細ページ
-        ========================== -->
+        <!-- =====================================
+             詳細ページ
+        ====================================== -->
+
         <div
             id="detail-page"
             class="detail-page-content"
@@ -154,14 +219,6 @@
 
 
             <div
-                id="detail-image"
-                class="detail-image"
-            >
-                📸 イメージ画像
-            </div>
-
-
-            <div
                 id="detail-text"
                 class="detail-text"
             >
@@ -169,12 +226,12 @@
             </div>
 
 
-            <!-- =========================
-                 ❓ クイズエリア
-            ========================== -->
+            <!-- =================================
+                 クイズ
+            ================================== -->
+
             <div id="quiz-area">
 
-                <!-- クイズ開始画面 -->
                 <div id="quiz-start-view">
 
                     <button
@@ -187,7 +244,6 @@
                 </div>
 
 
-                <!-- クイズ画面 -->
                 <div
                     id="quiz-game-view"
                     style="display: none;"
@@ -206,7 +262,6 @@
                     </h3>
 
 
-                    <!-- ⭕❌ 正誤表示 -->
                     <div
                         id="quiz-feedback"
                         class="quiz-feedback"
@@ -216,16 +271,13 @@
                     <div
                         class="quiz-options"
                         id="quiz-options-container"
-                    >
-                        <!-- JavaScriptでボタンを作成 -->
-                    </div>
+                    ></div>
 
                 </div>
 
 
-                <!-- =========================
-                     クイズ結果画面
-                ========================== -->
+                <!-- クイズ結果 -->
+
                 <div
                     id="quiz-result-view"
                     style="display: none;"
@@ -238,6 +290,7 @@
                         🎉
                     </div>
 
+
                     <h3
                         id="quiz-result-title"
                         class="quiz-result-title"
@@ -245,12 +298,14 @@
                         クイズ終了！
                     </h3>
 
+
                     <p
                         id="quiz-result-score"
                         class="quiz-result-score"
                     >
                         5 / 5
                     </p>
+
 
                     <button
                         class="more-btn"
@@ -264,9 +319,15 @@
             </div>
 
 
-            <!-- =========================
-                 一覧に戻る
-            ========================== -->
+            <!-- 注意書き -->
+
+            <p class="disclaimer">
+                このウェブサイトでは、様々な資料や情報を元に記事を作成しています。ただし、情報の誤りや、筆者の推測・解釈が含まれている可能性があります。重要な情報については、このウェブサイトの内容だけを判断材料にせず、信頼できる情報源で必ずご確認ください。
+            </p>
+
+
+            <!-- 一覧に戻る -->
+
             <div class="back-btn-wrapper">
 
                 <button
@@ -283,9 +344,10 @@
     </div>
 
 
-    <!-- =========================
+    <!-- =========================================
          🎉 お祝い演出
-    ========================== -->
+    ========================================== -->
+
     <div
         id="celebration-overlay"
         onclick="closeCelebration()"
@@ -298,13 +360,8 @@
             🎉 全問正解！おめでとう！ 🎉
         </div>
 
-        <p
-            style="
-                font-size: 20px;
-                color: #666;
-                margin-top: 20px;
-            "
-        >
+
+        <p class="celebration-help">
             画面をクリックして閉じる
         </p>
 
@@ -314,4 +371,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>

@@ -1,14 +1,428 @@
 /* =========================================
-   全体
+   🌌 宇宙背景
 ========================================= */
 
+html {
+    background: #020611;
+}
+
+
 body {
-    background-color: #f6f9fb;
+
+    background: #020611;
+
     color: #333333;
-    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+
+    font-family:
+        'Helvetica Neue',
+        Arial,
+        'Hiragino Kaku Gothic ProN',
+        sans-serif;
+
     line-height: 1.8;
+
     margin: 0;
+
     padding: 0;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    position: relative;
+
+}
+
+
+/* =========================================
+   🌌 宇宙背景本体
+========================================= */
+
+#space-background {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    background:
+
+        radial-gradient(
+            ellipse at 20% 30%,
+            rgba(25, 70, 150, 0.35),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            ellipse at 80% 70%,
+            rgba(90, 25, 160, 0.30),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(0, 120, 190, 0.20),
+            transparent 50%
+        ),
+
+        #020611;
+}
+
+
+/* =========================================
+   🌌 星雲
+========================================= */
+
+.nebula {
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    opacity: 0.45;
+
+    animation:
+        nebulaMove
+        18s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+.nebula-1 {
+
+    top: -300px;
+    left: -250px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 170, 255, 0.55),
+            rgba(20, 60, 180, 0.2),
+            transparent 70%
+        );
+}
+
+
+.nebula-2 {
+
+    right: -300px;
+    top: 20%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150, 50, 255, 0.45),
+            rgba(70, 20, 150, 0.18),
+            transparent 70%
+        );
+
+    animation-duration: 24s;
+}
+
+
+.nebula-3 {
+
+    left: 20%;
+    bottom: -500px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 220, 255, 0.30),
+            rgba(20, 80, 170, 0.12),
+            transparent 70%
+        );
+
+    animation-duration: 30s;
+}
+
+
+@keyframes nebulaMove {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(0.9);
+
+        opacity: 0.3;
+    }
+
+    50% {
+        transform:
+            translate(100px, 70px)
+            scale(1.15);
+
+        opacity: 0.55;
+    }
+
+    100% {
+        transform:
+            translate(-60px, 120px)
+            scale(1.05);
+
+        opacity: 0.4;
+    }
+}
+
+
+/* =========================================
+   ⭐ 星
+========================================= */
+
+#stars {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+}
+
+
+.space-star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 4px white,
+        0 0 8px rgba(150, 220, 255, 0.8);
+
+    animation:
+        starTwinkle
+        var(--twinkle-time)
+        ease-in-out
+        infinite;
+}
+
+
+.space-star.big {
+
+    width: 3px;
+    height: 3px;
+
+    box-shadow:
+        0 0 5px white,
+        0 0 12px rgba(100, 200, 255, 0.9),
+        0 0 20px rgba(100, 160, 255, 0.5);
+}
+
+
+@keyframes starTwinkle {
+
+    0% {
+        opacity: 0.15;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+}
+
+
+/* =========================================
+   💫 宇宙を漂う光
+========================================= */
+
+.space-glow {
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+
+    filter: blur(40px);
+
+    opacity: 0.2;
+
+    animation:
+        glowFloat
+        15s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+.glow-1 {
+
+    top: 25%;
+    left: 15%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(50, 180, 255, 0.7),
+            transparent 70%
+        );
+}
+
+
+.glow-2 {
+
+    right: 15%;
+    bottom: 15%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180, 80, 255, 0.6),
+            transparent 70%
+        );
+
+    animation-delay: -7s;
+}
+
+
+@keyframes glowFloat {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(0.8);
+
+        opacity: 0.15;
+    }
+
+    50% {
+        transform:
+            translate(100px, -80px)
+            scale(1.2);
+
+        opacity: 0.35;
+    }
+
+    100% {
+        transform:
+            translate(-70px, 80px)
+            scale(0.9);
+
+        opacity: 0.2;
+    }
+}
+
+
+/* =========================================
+   🌠 流れ星
+========================================= */
+
+#shooting-stars {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+.shooting-star {
+
+    position: absolute;
+
+    width: 150px;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.95),
+            rgba(130,210,255,0.8)
+        );
+
+    border-radius: 50%;
+
+    transform: rotate(-25deg);
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(100,200,255,0.8)
+        );
+
+    animation:
+        shootingStar
+        1.8s
+        linear
+        forwards;
+}
+
+
+@keyframes shootingStar {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(0, 0)
+            rotate(-25deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-700px, 400px)
+            rotate(-25deg);
+    }
+}
+
+
+/* =========================================
+   📄 サイト本体
+========================================= */
+
+.main-header,
+.container {
+
+    position: relative;
+
+    z-index: 2;
 }
 
 
@@ -60,40 +474,75 @@ body.text-large p {
 ========================================= */
 
 .main-header {
-    background: linear-gradient(135deg, #81d1f5, #4faedb);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35, 120, 190, 0.92),
+            rgba(70, 45, 170, 0.92)
+        );
+
     color: white;
+
     display: flex;
+
     align-items: center;
+
     padding: 20px 30px;
+
     margin: 20px;
+
     border-radius: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.4);
+
     box-shadow:
-        0 10px 25px rgba(79, 174, 219, 0.25),
-        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+
+        0 10px 35px
+        rgba(30, 120, 220, 0.35),
+
+        0 0 30px
+        rgba(90, 70, 255, 0.15),
+
+        inset 0 2px 4px
+        rgba(255, 255, 255, 0.3);
 }
 
 
 .header-title-area {
+
     text-align: center;
+
     flex-grow: 1;
+
     margin-right: 40px;
 }
 
 
 .main-header h1 {
+
     font-size: 32px;
+
     margin: 0;
+
     letter-spacing: 4px;
+
     text-shadow:
-        2px 3px 6px rgba(0, 0, 0, 0.15);
+        2px 3px 6px
+        rgba(0, 0, 0, 0.25);
+
     font-weight: bold;
 }
 
 
 .main-header p.subtitle {
+
     margin: 5px 0 0 0;
+
     font-size: 14px;
+
     font-weight: 500;
 }
 
@@ -103,11 +552,17 @@ body.text-large p {
 ========================================= */
 
 .menu-trigger-btn {
+
     background: none;
+
     border: none;
+
     color: white;
+
     font-size: 32px;
+
     cursor: pointer;
+
     padding: 10px;
 }
 
@@ -117,17 +572,30 @@ body.text-large p {
 ========================================= */
 
 .sidebar {
+
     position: fixed;
+
     top: 0;
+
     left: -300px;
+
     width: 260px;
+
     height: 100%;
+
     background-color: white;
+
     box-shadow:
-        4px 0 15px rgba(0, 0, 0, 0.1);
+        4px 0 15px
+        rgba(0, 0, 0, 0.1);
+
     z-index: 2000;
+
     padding: 20px;
-    transition: left 0.3s ease;
+
+    transition:
+        left 0.3s ease;
+
     color: #333333;
 }
 
@@ -138,25 +606,38 @@ body.text-large p {
 
 
 .sidebar-header {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
-    border-bottom: 1px solid #e2e8f0;
+
+    border-bottom:
+        1px solid #e2e8f0;
+
     padding-bottom: 10px;
 }
 
 
 .sidebar-header h3 {
+
     margin: 0;
+
     font-size: 18px;
 }
 
 
 .close-sidebar-btn {
+
     background: none;
+
     border: none;
+
     font-size: 24px;
+
     cursor: pointer;
+
     color: #aaa;
 }
 
@@ -166,32 +647,51 @@ body.text-large p {
 ========================================= */
 
 .menu-section-title {
+
     font-size: 12px;
+
     color: #a0aec0;
+
     font-weight: bold;
+
     margin-top: 25px;
+
     margin-bottom: 8px;
+
     letter-spacing: 1px;
 }
 
 
 .sidebar-menu-item {
+
     display: block;
+
     width: 100%;
+
     text-align: left;
+
     background: none;
+
     border: none;
+
     padding: 12px 10px;
+
     font-size: 15px;
+
     cursor: pointer;
+
     color: #333;
+
     border-radius: 6px;
+
     margin-bottom: 5px;
 }
 
 
 .sidebar-menu-item:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+
+    background-color:
+        rgba(0, 0, 0, 0.05);
 }
 
 
@@ -200,34 +700,54 @@ body.text-large p {
 ========================================= */
 
 .setting-row {
+
     display: flex;
+
     gap: 8px;
+
     margin-bottom: 10px;
 }
 
 
 .setting-btn {
+
     flex: 1;
+
     background-color: #edf2f7;
-    border: 1px solid #e2e8f0;
+
+    border:
+        1px solid #e2e8f0;
+
     padding: 8px;
+
     font-size: 14px;
+
     font-weight: bold;
+
     border-radius: 6px;
+
     cursor: pointer;
+
     color: #4a5568;
 }
 
 
 .setting-btn:hover {
-    background-color: #e2e8f0;
+
+    background-color:
+        #e2e8f0;
 }
 
 
 .setting-btn.active {
-    background-color: #3182ce;
+
+    background-color:
+        #3182ce;
+
     color: white;
-    border-color: #3182ce;
+
+    border-color:
+        #3182ce;
 }
 
 
@@ -236,13 +756,20 @@ body.text-large p {
 ========================================= */
 
 .overlay-shadow {
+
     display: none;
+
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+
+    background-color:
+        rgba(0, 0, 0, 0.4);
+
     z-index: 1500;
 }
 
@@ -257,20 +784,33 @@ body.text-large p {
 ========================================= */
 
 .container {
+
     max-width: 800px;
+
     margin: 0 auto;
-    padding: 10px 20px 20px 20px;
+
+    padding:
+        10px 20px 20px 20px;
 }
 
 
 .zatugaku-box {
-    background-color: #ffffff;
-    border-bottom: 2px solid #f0f0f0;
+
+    background-color:
+        rgba(255, 255, 255, 0.97);
+
+    border-bottom:
+        2px solid #f0f0f0;
+
     padding: 30px;
+
     margin-bottom: 30px;
+
     border-radius: 12px;
+
     box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.02);
+        0 8px 25px
+        rgba(0, 0, 0, 0.18);
 }
 
 
@@ -280,64 +820,30 @@ body.text-large p {
 }
 
 
-.article-image-area {
-    flex: 1;
-    position: relative;
-}
-
-
-.badge {
-    background-color: #e53e3e;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 4px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-}
-
-
-.article-image-placeholder {
-    background-color: #edf2f7;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #718096;
-    border-radius: 8px;
-    font-size: 14px;
-    overflow: hidden;
-}
-
-
 /* =========================================
-   🖼️ 記事画像
+   📝 記事情報
 ========================================= */
 
-.article-image-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    display: block;
-}
-
-
 .article-info-area {
-    flex: 1.5;
+
+    width: 100%;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: space-between;
 }
 
 
 .article-summary {
+
     font-size: 14px;
+
     color: #666;
-    margin: 10px 0;
+
+    margin:
+        10px 0;
 }
 
 
@@ -346,26 +852,59 @@ body.text-large p {
 ========================================= */
 
 .btn-wrapper {
+
     text-align: right;
+
     margin-top: 15px;
 }
 
 
 .more-btn {
-    background-color: #3182ce;
+
+    background-color:
+        #3182ce;
+
     color: white;
+
     border: none;
-    padding: 10px 24px;
+
+    padding:
+        10px 24px;
+
     font-size: 14px;
+
     font-weight: bold;
+
     border-radius: 4px;
+
     cursor: pointer;
-    transition: background 0.2s;
+
+    transition:
+        background 0.2s,
+        transform 0.15s,
+        box-shadow 0.15s;
 }
 
 
 .more-btn:hover {
-    background-color: #2b6cb0;
+
+    background-color:
+        #2b6cb0;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 12px
+        rgba(49, 130, 206, 0.25);
+}
+
+
+.more-btn:disabled {
+
+    cursor: default;
+
+    transform: none;
 }
 
 
@@ -374,68 +913,64 @@ body.text-large p {
 ========================================= */
 
 .detail-page-content {
-    background-color: #ffffff;
+
+    background-color:
+        #ffffff;
+
     padding: 30px;
+
     border-radius: 16px;
+
     box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.05);
+        0 4px 20px
+        rgba(0, 0, 0, 0.05);
+
     margin-top: 20px;
 }
 
 
 .detail-title {
+
     color: #111;
-    border-bottom: 3px solid #4faedb;
+
+    border-bottom:
+        3px solid #4faedb;
+
     padding-bottom: 12px;
+
     margin-top: 0;
 }
 
 
-.detail-image {
-    background-color: #edf2f7;
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #718096;
-    border-radius: 8px;
-    margin: 20px 0;
-    overflow: hidden;
-}
-
-
-.detail-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    display: block;
-}
-
-
-.detail-text p {
-    margin-bottom: 20px;
-}
-
-
 /* =========================================
-   マーカー
+   🖍️ スクロールで出てくるマーカー
 ========================================= */
 
 .highlight-marker {
+
+    position: relative;
+
+    display: inline;
+
     background:
         linear-gradient(
             transparent 60%,
-            rgba(255, 235, 59, 0.8) 40%
+            rgba(255, 235, 59, 0.75) 60%,
+            rgba(255, 235, 59, 0.75) 92%,
+            transparent 92%
         );
-    background-repeat: no-repeat;
+
     background-size: 0% 100%;
-    transition: background-size 1.2s ease-out;
-    display: inline;
+
+    background-repeat: no-repeat;
+
+    transition:
+        background-size 1.2s ease;
 }
 
 
 .highlight-marker.active {
+
     background-size: 100% 100%;
 }
 
@@ -445,40 +980,61 @@ body.text-large p {
 ========================================= */
 
 #quiz-area {
-    background-color: #fff9e6;
-    border: 2px dashed #ffb74d;
+
+    background-color:
+        #fff9e6;
+
+    border:
+        2px dashed #ffb74d;
+
     padding: 25px;
+
     border-radius: 12px;
+
     text-align: center;
+
     margin-top: 40px;
 }
 
 
 #quiz-area h3 {
+
     margin-top: 0;
+
     color: #e65100;
 }
 
 
 .quiz-progress {
+
     font-size: 14px;
+
     color: #666;
+
     margin-bottom: 10px;
 }
 
 
 .quiz-options {
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 12px;
+
     margin-top: 20px;
 }
 
 
 .quiz-options .more-btn {
+
     width: 80%;
+
     margin: 5px 0;
 }
 
@@ -488,15 +1044,26 @@ body.text-large p {
 ========================================= */
 
 .quiz-feedback {
+
     min-height: 55px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     font-size: 28px;
+
     font-weight: bold;
+
     margin: 10px 0;
+
     opacity: 0;
-    transform: scale(0.7);
+
+    transform:
+        scale(0.7);
+
     transition:
         opacity 0.2s ease,
         transform 0.2s ease;
@@ -504,8 +1071,11 @@ body.text-large p {
 
 
 .quiz-feedback.show {
+
     opacity: 1;
-    transform: scale(1);
+
+    transform:
+        scale(1);
 }
 
 
@@ -524,23 +1094,33 @@ body.text-large p {
 ========================================= */
 
 .quiz-result-icon {
+
     font-size: 60px;
+
     margin-bottom: 10px;
 }
 
 
 .quiz-result-title {
+
     font-size: 28px;
+
     color: #e65100;
+
     margin: 10px 0;
 }
 
 
 .quiz-result-score {
+
     font-size: 42px;
+
     font-weight: bold;
+
     color: #3182ce;
-    margin: 10px 0 25px 0;
+
+    margin:
+        10px 0 25px 0;
 }
 
 
@@ -549,23 +1129,41 @@ body.text-large p {
 ========================================= */
 
 .back-btn-wrapper {
+
     margin-top: 40px;
+
     text-align: center;
-    border-top: 1px dashed #e2e8f0;
+
+    border-top:
+        1px dashed #e2e8f0;
+
     padding-top: 30px;
 }
 
 
 .back-btn {
-    background-color: #6c757d;
+
+    background-color:
+        #6c757d;
+
     color: white;
+
     border: none;
-    padding: 12px 35px;
+
+    padding:
+        12px 35px;
+
     font-size: 15px;
+
     font-weight: bold;
+
     border-radius: 4px;
+
     cursor: pointer;
-    transition: background 0.2s;
+
+    transition:
+        background 0.2s;
+
     display: inline-block;
 }
 
@@ -576,34 +1174,92 @@ body.text-large p {
 
 
 /* =========================================
+   ⚠️ 注意書き
+========================================= */
+
+.disclaimer {
+
+    font-size: 13px;
+
+    color: #718096;
+
+    background-color: #f7fafc;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    margin-top: 40px;
+
+    border-left:
+        4px solid #cbd5e0;
+
+    line-height: 1.6;
+
+    text-align: left;
+}
+
+
+/* =========================================
    🎉 お祝い演出
 ========================================= */
 
 #celebration-overlay {
+
     display: none;
+
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
+
+    background-color:
+        rgba(255, 255, 255, 0.95);
+
     z-index: 3000;
+
     align-items: center;
+
     justify-content: center;
+
     flex-direction: column;
+
     font-size: 40px;
+
     font-weight: bold;
+
     color: #ff4d4d;
+
     text-align: center;
+
     cursor: pointer;
 }
 
 
 .celebration-title {
+
     animation:
-        celebrationBounce 0.6s infinite alternate;
+        celebrationBounce
+        0.6s
+        infinite
+        alternate;
+
     text-shadow:
-        2px 4px 10px rgba(0, 0, 0, 0.1);
+        2px 4px 10px
+        rgba(0, 0, 0, 0.1);
+}
+
+
+.celebration-help {
+
+    font-size: 20px;
+
+    color: #666;
+
+    margin-top: 20px;
 }
 
 
@@ -616,7 +1272,6 @@ body.text-large p {
     100% {
         transform: translateY(-15px);
     }
-
 }
 
 
@@ -625,9 +1280,15 @@ body.text-large p {
 ========================================= */
 
 .particle {
+
     position: absolute;
+
     animation:
-        popEffect 1.5s ease-out forwards;
+        popEffect
+        1.5s
+        ease-out
+        forwards;
+
     font-size: 40px;
 }
 
@@ -635,21 +1296,41 @@ body.text-large p {
 @keyframes popEffect {
 
     0% {
+
         transform:
             translate(0, 0)
             rotate(0deg)
             scale(0.5);
+
         opacity: 1;
     }
 
     100% {
+
         transform:
             translate(var(--x), var(--y))
             rotate(360deg)
             scale(1.6);
+
         opacity: 0;
     }
+}
 
+
+/* =========================================
+   📖 記事ページ
+   宇宙背景を消して白くする
+========================================= */
+
+body.article-view {
+
+    background: #f6f9fb;
+}
+
+
+body.article-view #space-background {
+
+    display: none;
 }
 
 
@@ -660,74 +1341,77 @@ body.text-large p {
 @media (max-width: 600px) {
 
     .main-header {
+
         margin: 10px;
+
         padding: 15px;
     }
 
 
     .main-header h1 {
+
         font-size: 25px;
+
         letter-spacing: 2px;
     }
 
 
     .main-header p.subtitle {
+
         font-size: 11px;
     }
 
 
     .header-title-area {
+
         margin-right: 10px;
     }
 
 
-    .article-top {
-        flex-direction: column;
-    }
-
-
-    .article-image-placeholder {
-        height: 180px;
-    }
-
-
     .zatugaku-box {
+
         padding: 20px;
     }
 
 
     .detail-page-content {
+
         padding: 20px;
     }
 
 
     .quiz-options .more-btn {
+
         width: 100%;
     }
 
 
     .celebration-title {
+
         font-size: 30px;
     }
 
 
-    /* スマホでも画像が画面からはみ出さない */
-    .article-image-placeholder img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .detail-page-content .detail-title {
+
+        font-size: 22px;
     }
 
 
-    .detail-image {
-        height: 200px;
+    .nebula {
+
+        width: 450px;
+
+        height: 450px;
+
+        filter: blur(55px);
     }
 
 
-    .detail-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+    .space-glow {
 
+        width: 180px;
+
+        height: 180px;
+    }
 }

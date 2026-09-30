@@ -1,5 +1,5 @@
 // ============================================================
-// 💧 1. 記事のデータベース
+// 🌌 1. 記事のデータベース
 // ============================================================
 
 const articlesData = [
@@ -7,68 +7,48 @@ const articlesData = [
     {
         id: 1,
 
-        title: "1番身近な液体「水」――実は、現代科学でも謎だらけ？",
+        title: "地球の文明レベルは「0.7」しかない？",
 
         summary:
-            "毎日飲んでいる「水」。実は、水は地球上でも特に謎の多い液体の一つです。地球には大量の水がありますが、人類が実際に利用できる水は、そのほんの一部にすぎません。さらに、水には私たちが普段あまり意識しない、不思議な性質が数多くあります。そんな身近な「水」の知られざる真実をまとめました。",
+            "地球の文明は「0.7」。文明レベルをどうやって数値化したのかが面白すぎるのでご紹介します。",
 
         text:
 
-            "<p>毎日飲んでいる「水」。実は、水は地球上でも特に謎の多い液体の一つです。地球には大量の水がありますが、人類が実際に利用できる水は、そのほんの一部にすぎません。さらに、水には私たちが普段あまり意識しない、不思議な性質が数多くあります。そんな身近な「水」の知られざる真実をまとめました。</p>" +
+            "<p><span class='highlight-marker'>★地球の文明レベルは0.7</span></p>" +
 
-            "<p><span class='highlight-marker'>★人類が使える水は「お風呂1杯に対して、わずか大さじ1杯」</span></p>" +
+            "<p>地球の文明は3段階中（拡張案として7段階もあります）0.7程度とされていて、これは、宇宙に存在するかもしれない高度な文明を分類するために、科学者が考案した基準です。</p>" +
 
-            "<p>地球は「水の惑星」と言われています。地球には、おおよそ14億km³の水があり、地球表面の約7割が海に覆われています。しかし、その水のほとんどは海水です。人間が飲むことのできる川や湖などの淡水（真水）は、地球上の水の約2.5%しかありません。</p>" +
+            "<p>文明を数値化するのはいろんな観点があり、難しいです。しかし文明のレベルは、その星が「どれだけのエネルギーを使いこなせているか」というもので決まっています。</p>" +
 
-            "<p>そして、その淡水のほとんどは南極や北極などの雪や氷として存在しています。そのため、人間が実際に生活に利用できる水の量は、地球全体の水の約0.01%ほどしかないのです。<span class='highlight-marker'>地球上のすべての水を200Lのお風呂1杯分にたとえると、人間が利用できる水は、わずか大さじ1杯（約20mL）ほどになります。</span></p>" +
+            "<p>例えば、車がどれだけ移動したかを知りたいなら使った燃料を見ればわかります。なので地球はどれだけのエネルギーを必要としているかで文明を数値化する方法です。</p>" +
 
-            "<p>日本では、1日に約300Lもの水が使われています。また、日本の1日あたりの水道使用量は約400億Lにもなります。</p>" +
+            "<p>地球ではこの星のエネルギーをすべて必要とするほどではありませんので、1以下になるのです。</p>" +
 
-            "<p><span class='highlight-marker'>★身近な液体だけど、謎だらけの「水」</span></p>" +
+            "<p><span class='highlight-marker'>★タイプ以上の文明について</span></p>" +
 
-            "<p>水には、ほかの物質とは違う不思議な性質がたくさんあります。</p>" +
+            "<p><strong>タイプⅠ：</strong>惑星全体で利用可能なすべてのエネルギー（気候や地震の制御、全地表のエネルギーなど）を使用・制御できる段階。</p>" +
 
-            "<p>・普通、物質は冷えると体積が小さくなります。しかし、水は4℃のときに密度が最大になります。</p>" +
+            "<p><strong>タイプⅡ：</strong>太陽などの恒星から発せられるすべてのエネルギーを利用できる段階。ダイソン球（恒星を囲む巨大構造物）などでエネルギーを回収するレベルです。</p>" +
 
-            "<p>・氷になると逆に体積が増えて、水に浮くという珍しい性質を持っています。この性質のおかげで、水が凍ると水面に氷ができ、その下には液体の水が残ります。こうなると水に住む生物が生き残ることができます。</p>" +
+            "<p><strong>タイプⅢ：</strong>銀河系全体のエネルギーを利用・制御できる段階。銀河内の無数の星々やブラックホールなどのエネルギーを活用します。</p>" +
 
-            "<p>・水は砂糖や塩など、さまざまな物質を溶かしやすいという性質も持っています。</p>" +
+            "<p>現在の地球は、まだ太陽や地球のエネルギーを完全に使いこなせていないため、たったの「0.7」と評価されています。</p>" +
 
-            "<p>・水は非常に圧縮されにくい物質でもあります。数千トンもの圧力をかけても、体積は1%程度しか減らないとされるほどです。これは、水分子同士が密に存在しているため、水を圧縮することが難しいからです。</p>" +
+            "<p><span class='highlight-marker'>ここから先は、観測可能な宇宙や複数の銀河系にわたるエネルギーを利用する段階や、複数の宇宙（マルチバース）や次元を超え、物理法則や宇宙そのものを創造・制御する神の領域に近い段階になります。</span></p>" +
 
-            "<p><span class='highlight-marker'>★超高圧の世界で変化する水</span></p>" +
+            "<p>ここまで来ると想像もできない世界です。</p>" +
 
-            "<p>先ほど水は圧縮されにくい物質だと説明しましたが、水が耐えられないほど圧縮するとどうなるのでしょう。水圧は、水深が深くなるほど大きくなります。たとえば、深さ1万mを超えるマリアナ海溝では、非常に大きな水圧がかかります。これは、スマートフォンの画面にゾウが100頭乗っているほどの力にたとえられることがあります。しかし、これほどの水圧がかかっても、水の体積はほとんど変化しません。</p>" +
-
-            "<p>では、さらに圧力をかけていったら、水はどうなるのでしょうか？地球の表面から約300kmを超えたあたりでは、温度が1000℃を超え、圧力も10万気圧を超えるとされています。ここまでくると、水にも変化が起こります。このような高温・高圧の環境では、水は普通の液体として存在することができなくなります。しかし、単純に水蒸気になるわけではありません。</p>" +
-
-            "<p><span class='highlight-marker'>水は「アイスⅦ」と呼ばれる、特別な構造を持った氷へと変化します。</span>このアイスⅦは、ダイヤモンドの中にも存在することが確認されています。この発見は、地球内部のマントルに水が存在する可能性を示すものでもあります。</p>" +
-
-            "<p>現在では、レーザーを使った実験によって、直接見ることのできない地球内部のような環境を再現する研究も行われています。このようなレーザーを使った実験では、圧力は1億気圧以上、温度は1万K以上に達することがあります。私たちが毎日見ている太陽の表面温度は約5500℃なので、1万K（約9727℃）という温度は、太陽の表面温度よりも約1.7倍高い温度です。このような極限環境では、地球内部だけでなく、木星の内部環境の一部を再現できると考えられています。</p>" +
-
-            "<p>このように実験を進めて行く中で新たにアイスXVIIIという新しい氷も発見されています。これは一定の条件変化では普通の氷にはない電気を通す性質もあり、これは氷でできた惑星の海王星や天王星にも存在する可能性があると考えられています。</p>" +
-
-            "<p><span class='highlight-marker'>★金属水素とは？そして活用できる未来</span></p>" +
-
-            "<p>さらに、木星の内部などの過酷な環境では、「金属水素」と呼ばれる物質も存在すると考えられています。金属水素とは、水素が超高圧環境で圧縮され、電子が自由に動ける状態になったものです。</p>" +
-
-            "<p>これは実際に、1996年にアメリカで発見されたとされています。金属水素には、将来の技術に利用できる可能性も考えられています。たとえば、水素は超高圧の環境で金属化すると、超伝導、つまり電気抵抗がゼロになる状態になる可能性があります。普通の電線では、電気が流れるときに熱が発生し、エネルギーの一部が失われます。しかし、超伝導が実現すれば、このエネルギー損失を理論上ほとんどなくすことができます。</p>" +
-
-            "<p>また、水素は非常に軽い物質です。そのため、金属水素を燃料として活用できれば、飛行機やロケットなどに大量の燃料を積むことができる可能性があります。さらに、宇宙探査機や人工衛星にも、より多くの機材を搭載できるようになれば、これまで以上に長距離の宇宙ミッションが可能になるかもしれません。</p>" +
+            "<p>しかしまだ、タイプⅢ以上のものは見つかっておらず、地球はタイプⅠになるのも数百後年と予想されています。</p>" +
 
             "<p><span class='highlight-marker'>★まとめ</span></p>" +
 
-            "<p>私たちの身近にある「水」しかし、その正体を深く探っていくと、地球内部や宇宙、そして未来の技術にもつながる、驚くほど奥深い物質なのです。これからの研究に期待しましょう。</p>",
+            "<p>私たちが暮らす地球の文明は、宇宙規模で見るとまだ「0.7」程度。さらに上のタイプへ進むには、惑星、恒星、そして銀河全体のエネルギーを利用できるほどの文明が必要になります。</p>",
 
-        badge: "最新話",
+        badge: "宇宙文明",
 
-        badgeColor: "#e53e3e",
+        badgeColor: "#805ad5",
 
-        // ✨ こう書き換えます！
-image: "water.jpg",
-
-
-        date: "2026-09-27",
+        date: "2026-09-30",
 
         views: 0,
 
@@ -76,12 +56,12 @@ image: "water.jpg",
 
             {
                 question:
-                    "地球上のすべての水を200Lのお風呂1杯分にたとえた場合、人間が利用できる水はどのくらい？",
+                    "現在の地球の文明レベルは、およそいくつとされていますか？",
 
                 choices: [
-                    "大さじ1杯ほど",
-                    "バケツ1杯ほど",
-                    "お風呂半分ほど"
+                    "0.7",
+                    "1.5",
+                    "3.0"
                 ],
 
                 correctIndex: 0
@@ -89,12 +69,12 @@ image: "water.jpg",
 
             {
                 question:
-                    "水の密度が最大になる温度は？",
+                    "文明レベルは主に何をどれだけ利用できるかによって分類されますか？",
 
                 choices: [
-                    "0℃",
-                    "4℃",
-                    "10℃"
+                    "人口",
+                    "エネルギー",
+                    "惑星の大きさ"
                 ],
 
                 correctIndex: 1
@@ -102,12 +82,12 @@ image: "water.jpg",
 
             {
                 question:
-                    "高圧環境で水が変化する「アイスⅦ」は何？",
+                    "タイプⅡの文明が利用するとされるものは？",
 
                 choices: [
-                    "特別な構造を持った氷",
-                    "金属になった水",
-                    "水蒸気の一種"
+                    "恒星から発せられるエネルギー",
+                    "地球上の水だけ",
+                    "一つの都市の電力だけ"
                 ],
 
                 correctIndex: 0
@@ -115,25 +95,25 @@ image: "water.jpg",
 
             {
                 question:
-                    "記事中で、金属水素について説明されている性質はどれ？",
+                    "タイプⅢの文明が利用・制御できるとされる範囲は？",
 
                 choices: [
-                    "電気をまったく通さない",
-                    "超高圧環境で超伝導になる可能性がある",
-                    "常温で必ず液体になる"
+                    "一つの都市",
+                    "一つの惑星",
+                    "銀河系全体"
                 ],
 
-                correctIndex: 1
+                correctIndex: 2
             },
 
             {
                 question:
-                    "記事で紹介されている新しい氷の名前は？",
+                    "記事で紹介されている、恒星を囲んでエネルギーを回収する巨大構造物は？",
 
                 choices: [
-                    "アイスXVIII",
-                    "アイスX",
-                    "アイスXX"
+                    "ダイソン球",
+                    "スペースエレベーター",
+                    "宇宙ステーション"
                 ],
 
                 correctIndex: 0
@@ -189,6 +169,7 @@ function playSound(type) {
 
     gain.connect(ctx.destination);
 
+
     if (type === 'click') {
 
         osc.type = 'sine';
@@ -215,6 +196,7 @@ function playSound(type) {
         );
 
     }
+
 
     else if (type === 'correct') {
 
@@ -247,6 +229,7 @@ function playSound(type) {
         );
 
     }
+
 
     else if (type === 'wrong') {
 
@@ -294,27 +277,39 @@ function changeTextSize(size) {
         'text-' + size
     );
 
+
     const buttons =
         document.querySelectorAll(
-            '.setting-row:nth-of-type(1) .setting-btn'
+            '.setting-row .setting-btn'
         );
 
-    buttons.forEach(function(btn) {
 
-        btn.classList.remove('active');
+    const textButtons = [
+        buttons[0],
+        buttons[1],
+        buttons[2]
+    ];
+
+
+    textButtons.forEach(function(btn) {
+
+        if (btn) {
+            btn.classList.remove('active');
+        }
 
     });
 
-    if (size === 'small') {
-        buttons[0].classList.add('active');
+
+    if (size === 'small' && textButtons[0]) {
+        textButtons[0].classList.add('active');
     }
 
-    if (size === 'normal') {
-        buttons[1].classList.add('active');
+    if (size === 'normal' && textButtons[1]) {
+        textButtons[1].classList.add('active');
     }
 
-    if (size === 'large') {
-        buttons[2].classList.add('active');
+    if (size === 'large' && textButtons[2]) {
+        textButtons[2].classList.add('active');
     }
 
 }
@@ -328,6 +323,7 @@ function setSound(status) {
 
     isSoundOn = status;
 
+
     document
         .getElementById('sound-on-btn')
         .classList.toggle(
@@ -335,12 +331,14 @@ function setSound(status) {
             status
         );
 
+
     document
         .getElementById('sound-off-btn')
         .classList.toggle(
             'active',
             !status
         );
+
 
     if (isSoundOn) {
         playSound('click');
@@ -358,6 +356,7 @@ function sortArticles(type) {
     let sorted =
         [...articlesData];
 
+
     if (type === 'new') {
 
         sorted.sort(
@@ -371,6 +370,7 @@ function sortArticles(type) {
 
     }
 
+
     else if (type === 'old') {
 
         sorted.sort(
@@ -383,6 +383,7 @@ function sortArticles(type) {
         );
 
     }
+
 
     renderArticlesList(sorted);
 
@@ -402,36 +403,21 @@ function renderArticlesList(list) {
 
     mainPage.innerHTML = '';
 
+
     list.forEach(function(article) {
 
         const box =
             document.createElement('div');
 
+
         box.classList.add(
             'zatugaku-box'
         );
 
+
         box.innerHTML = `
 
             <div class="article-top">
-
-                <div class="article-image-area">
-
-                    <span
-                        class="badge"
-                        style="background-color: ${article.badgeColor};"
-                    >
-                        ${article.badge}
-                    </span>
-
-                    <div class="article-image-placeholder">
-                        <img
-                            src="${article.image}"
-                            alt="記事の画像"
-                        >
-                    </div>
-
-                </div>
 
                 <div class="article-info-area">
 
@@ -439,9 +425,11 @@ function renderArticlesList(list) {
                         ${article.title}
                     </h2>
 
+
                     <p class="article-summary">
                         ${article.summary}
                     </p>
+
 
                     <div class="btn-wrapper">
 
@@ -459,6 +447,7 @@ function renderArticlesList(list) {
             </div>
 
         `;
+
 
         mainPage.appendChild(box);
 
@@ -492,12 +481,14 @@ function goToDetailPage(id) {
 
     activeArticleId = id;
 
+
     const article =
         articlesData.find(
             function(a) {
                 return a.id === id;
             }
         );
+
 
     if (!article) {
 
@@ -516,10 +507,6 @@ function goToDetailPage(id) {
         .innerText =
         article.title;
 
-    document
-        .getElementById('detail-image')
-        .innerHTML =
-        `<img src="${article.image}" alt="記事の画像">`;
 
     document
         .getElementById('detail-text')
@@ -536,20 +523,24 @@ function goToDetailPage(id) {
         .style.display =
         'block';
 
+
     document
         .getElementById('quiz-game-view')
         .style.display =
         'none';
+
 
     document
         .getElementById('quiz-result-view')
         .style.display =
         'none';
 
+
     document
         .getElementById('quiz-feedback')
         .innerText =
         '';
+
 
     document
         .getElementById('quiz-feedback')
@@ -562,28 +553,49 @@ function goToDetailPage(id) {
         .style.display =
         'none';
 
+
     document
         .getElementById('detail-page')
         .style.display =
         'block';
 
 
+    /*
+     * 記事ページでは
+     * 宇宙背景とホームのヘッダーを消す
+     */
+
+    document.body.classList.add(
+        'article-view'
+    );
+
+
+    /*
+     * ページ上部へ移動
+     */
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'instant'
+    });
+
+
+    /*
+     * マーカーをいったん全部OFF
+     */
+
+    resetHighlightMarkers();
+
+
+    /*
+     * 少し待ってからスクロール監視開始
+     */
+
     setTimeout(function() {
 
-        const markers =
-            document.querySelectorAll(
-                '.highlight-marker'
-            );
+        setupHighlightObserver();
 
-        markers.forEach(function(marker) {
-
-            marker.classList.add(
-                'active'
-            );
-
-        });
-
-    }, 500);
+    }, 100);
 
 }
 
@@ -599,15 +611,47 @@ function goToMainPage() {
         .style.display =
         'none';
 
+
     document
         .getElementById('main-page')
         .style.display =
         'block';
 
+
+    document.body.classList.remove(
+        'article-view'
+    );
+
+
+    resetHighlightMarkers();
+
+
+    currentQuizData = [];
+
+    currentQuestionIndex = 0;
+
+    quizScore = 0;
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'instant'
+    });
+
+}
+
+
+// ============================================================
+// 🖍️ マーカーをリセット
+// ============================================================
+
+function resetHighlightMarkers() {
+
     const markers =
         document.querySelectorAll(
             '.highlight-marker'
         );
+
 
     markers.forEach(function(marker) {
 
@@ -617,11 +661,81 @@ function goToMainPage() {
 
     });
 
-    currentQuizData = [];
+}
 
-    currentQuestionIndex = 0;
 
-    quizScore = 0;
+// ============================================================
+// 🖍️ スクロール連動マーカー
+// ============================================================
+
+let highlightObserver = null;
+
+
+function setupHighlightObserver() {
+
+    if (highlightObserver) {
+
+        highlightObserver.disconnect();
+
+        highlightObserver = null;
+
+    }
+
+
+    const markers =
+        document.querySelectorAll(
+            '#detail-text .highlight-marker'
+        );
+
+
+    if (markers.length === 0) {
+        return;
+    }
+
+
+    /*
+     * マーカーが画面の中央付近まで来たら
+     * 線を引く
+     */
+
+    highlightObserver =
+        new IntersectionObserver(
+
+            function(entries) {
+
+                entries.forEach(function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            'active'
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                root: null,
+
+                rootMargin:
+                    '-15% 0px -20% 0px',
+
+                threshold: 0
+            }
+
+        );
+
+
+    markers.forEach(function(marker) {
+
+        highlightObserver.observe(
+            marker
+        );
+
+    });
 
 }
 
@@ -645,24 +759,29 @@ function startQuizGame() {
 
     }
 
+
     currentQuestionIndex = 0;
 
     quizScore = 0;
+
 
     document
         .getElementById('quiz-start-view')
         .style.display =
         'none';
 
+
     document
         .getElementById('quiz-result-view')
         .style.display =
         'none';
 
+
     document
         .getElementById('quiz-game-view')
         .style.display =
         'block';
+
 
     showQuestion();
 
@@ -691,6 +810,7 @@ function showQuestion() {
             currentQuestionIndex
         ];
 
+
     if (!currentQuiz) {
 
         endQuizGame();
@@ -699,32 +819,39 @@ function showQuestion() {
 
     }
 
+
     document
         .getElementById('quiz-progress')
         .innerText =
         `第 ${currentQuestionIndex + 1} 問 / 全 ${currentQuizData.length} 問`;
+
 
     document
         .getElementById('quiz-question')
         .innerText =
         currentQuiz.question;
 
+
     const feedback =
         document.getElementById(
             'quiz-feedback'
         );
+
 
     feedback.innerText = '';
 
     feedback.className =
         'quiz-feedback';
 
+
     const container =
         document.getElementById(
             'quiz-options-container'
         );
 
+
     container.innerHTML = '';
+
 
     currentQuiz.choices.forEach(
         function(choice, index) {
@@ -734,11 +861,14 @@ function showQuestion() {
                     'button'
                 );
 
+
             btn.className =
                 'more-btn';
 
+
             btn.innerText =
                 choice;
+
 
             btn.onclick =
                 function() {
@@ -746,6 +876,7 @@ function showQuestion() {
                     checkAnswer(index);
 
                 };
+
 
             container.appendChild(
                 btn
@@ -768,11 +899,11 @@ function checkAnswer(selectedIndex) {
             currentQuestionIndex
         ];
 
+
     if (!currentQuiz) {
-
         return;
-
     }
+
 
     const buttons =
         document.querySelectorAll(
@@ -798,6 +929,7 @@ function checkAnswer(selectedIndex) {
 
         playSound('correct');
 
+
         showQuizFeedback(
             '⭕ 正解！',
             'correct'
@@ -805,9 +937,11 @@ function checkAnswer(selectedIndex) {
 
     }
 
+
     else {
 
         playSound('wrong');
+
 
         showQuizFeedback(
             '❌ 不正解！',
@@ -820,6 +954,7 @@ function checkAnswer(selectedIndex) {
     setTimeout(function() {
 
         currentQuestionIndex++;
+
 
         if (
             currentQuestionIndex <
@@ -855,8 +990,10 @@ function showQuizFeedback(
             'quiz-feedback'
         );
 
+
     feedback.innerText =
         message;
+
 
     feedback.className =
         'quiz-feedback show ' +
@@ -875,6 +1012,7 @@ function endQuizGame() {
         .getElementById('quiz-game-view')
         .style.display =
         'none';
+
 
     document
         .getElementById('quiz-result-view')
@@ -897,6 +1035,7 @@ function endQuizGame() {
             .getElementById('quiz-result-icon')
             .innerText =
             '🎉';
+
 
         document
             .getElementById('quiz-result-title')
@@ -924,12 +1063,14 @@ function endQuizGame() {
 
     }
 
+
     else {
 
         document
             .getElementById('quiz-result-icon')
             .innerText =
             '📝';
+
 
         document
             .getElementById('quiz-result-title')
@@ -952,13 +1093,16 @@ function createParticle() {
             'celebration-overlay'
         );
 
+
     const p =
         document.createElement(
             'div'
         );
 
+
     p.className =
         'particle';
+
 
     p.innerText =
         [
@@ -973,35 +1117,43 @@ function createParticle() {
             )
         ];
 
+
     p.style.left =
         '50%';
 
+
     p.style.top =
         '50%';
+
 
     const x =
         (Math.random() - 0.5) *
         window.innerWidth *
         0.8;
 
+
     const y =
         (Math.random() - 0.5) *
         window.innerHeight *
         0.8;
+
 
     p.style.setProperty(
         '--x',
         `${x}px`
     );
 
+
     p.style.setProperty(
         '--y',
         `${y}px`
     );
 
+
     overlay.appendChild(
         p
     );
+
 
     setTimeout(
         function() {
@@ -1028,10 +1180,12 @@ function closeCelebration() {
         .style.display =
         'none';
 
+
     const particles =
         document.querySelectorAll(
             '.particle'
         );
+
 
     particles.forEach(
         function(p) {
@@ -1045,10 +1199,144 @@ function closeCelebration() {
 
 
 // ============================================================
+// 🌟 星を生成
+// ============================================================
+
+function createStars() {
+
+    const starsContainer =
+        document.getElementById(
+            'stars'
+        );
+
+
+    if (!starsContainer) {
+        return;
+    }
+
+
+    starsContainer.innerHTML = '';
+
+
+    const starCount =
+        window.innerWidth < 600
+            ? 100
+            : 180;
+
+
+    for (
+        let i = 0;
+        i < starCount;
+        i++
+    ) {
+
+        const star =
+            document.createElement(
+                'div'
+            );
+
+
+        star.className =
+            'space-star';
+
+
+        if (Math.random() < 0.15) {
+
+            star.classList.add(
+                'big'
+            );
+
+        }
+
+
+        star.style.left =
+            Math.random() * 100 +
+            '%';
+
+
+        star.style.top =
+            Math.random() * 100 +
+            '%';
+
+
+        star.style.setProperty(
+            '--twinkle-time',
+            (2 + Math.random() * 4) +
+            's'
+        );
+
+
+        star.style.animationDelay =
+            (-Math.random() * 5) +
+            's';
+
+
+        starsContainer.appendChild(
+            star
+        );
+
+    }
+
+}
+
+
+// ============================================================
+// 🌠 流れ星を生成
+// ============================================================
+
+function createShootingStar() {
+
+    const container =
+        document.getElementById(
+            'shooting-stars'
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    const star =
+        document.createElement(
+            'div'
+        );
+
+
+    star.className =
+        'shooting-star';
+
+
+    star.style.left =
+        (20 + Math.random() * 100) +
+        '%';
+
+
+    star.style.top =
+        Math.random() * 70 +
+        '%';
+
+
+    container.appendChild(
+        star
+    );
+
+
+    setTimeout(function() {
+
+        star.remove();
+
+    }, 1800);
+
+}
+
+
+// ============================================================
 // 🚀 最初の起動
 // ============================================================
 
-window.onload =
+window.addEventListener(
+    'load',
     function() {
 
         const sortedArticles =
@@ -1061,8 +1349,54 @@ window.onload =
                 }
             );
 
+
         renderArticlesList(
             sortedArticles
         );
 
-    };
+
+        /*
+         * 星を作る
+         */
+
+        createStars();
+
+
+        /*
+         * 約3〜7秒ごとに流れ星
+         */
+
+        setInterval(
+            function() {
+
+                if (
+                    !document.body.classList.contains(
+                        'article-view'
+                    )
+                ) {
+
+                    createShootingStar();
+
+                }
+
+            },
+
+            3000 + Math.random() * 4000
+        );
+
+    }
+);
+
+
+// ============================================================
+// 🌟 画面サイズ変更時に星を再配置
+// ============================================================
+
+window.addEventListener(
+    'resize',
+    function() {
+
+        createStars();
+
+    }
+);
