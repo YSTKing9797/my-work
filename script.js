@@ -1,5 +1,5 @@
 // ============================================================
-// 🌌 articles.json から記事を読み込む
+// 🌌 articles.json から記事を読み込む（本文が空ならローカルfallbackを使う）
 // ============================================================
 let articlesData = [];
 
@@ -42,12 +42,20 @@ async function loadArticles() {
     try {
         const response = await fetch('articles.json', { cache: 'no-store' });
         if (!response.ok) {
-            throw new Error('articles.json read failed');
+            throw new Error('articles.json read failed: ' + response.status);
         }
         const data = await response.json();
         const loaded = data && Array.isArray(data.articles) ? data.articles : (Array.isArray(data) ? data : null);
         if (loaded) {
-            articlesData = loaded;
+            // マージ: fetched の記事で text が空なら fallback の本文を使う
+            articlesData = loaded.map(function (a) {
+                const copy = Object.assign({}, a);
+                if (!copy.text || String(copy.text).trim() === '') {
+                    const fb = fallbackArticlesData.find(function (f) { return f.id === copy.id; });
+                    if (fb && fb.text) copy.text = fb.text;
+                }
+                return copy;
+            });
             return;
         }
         throw new Error('articles.json format is invalid');
@@ -105,10 +113,7 @@ function changeTextSize(size) {
 
     const buttons = document.querySelectorAll('.setting-row .setting-btn');
     const textButtons = [buttons[0], buttons[1], buttons[2]];
-    textButtons.forEach(function (btn) {
-        if (btn) btn.classList.remove('active');
-    });
-
+    textButtons.forEach(function (btn) { if (btn) btn.classList.remove('active'); });
     if (size === 'small' && textButtons[0]) textButtons[0].classList.add('active');
     if (size === 'normal' && textButtons[1]) textButtons[1].classList.add('active');
     if (size === 'large' && textButtons[2]) textButtons[2].classList.add('active');
@@ -124,13 +129,9 @@ function setSound(status) {
 function sortArticles(type) {
     let sorted = [...articlesData];
     if (type === 'new') {
-        sorted.sort(function (a, b) {
-            return new Date(b.date) - new Date(a.date);
-        });
+        sorted.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
     } else if (type === 'old') {
-        sorted.sort(function (a, b) {
-            return new Date(a.date) - new Date(b.date);
-        });
+        sorted.sort(function (a, b) { return new Date(a.date) - new Date(b.date); });
     }
     renderArticlesList(sorted);
     toggleSidebar();
@@ -140,19 +141,11 @@ function getFilteredArticles() {
     const input = document.getElementById('article-search');
     const keyword = (input ? input.value : '').trim().toLowerCase();
     if (!keyword) {
-        return [...articlesData].sort(function (a, b) {
-            return new Date(b.date) - new Date(a.date);
-        });
+        return [...articlesData].sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
     }
 
     return articlesData.filter(function (article) {
-        const haystack = [
-            article.title,
-            article.summary,
-            article.text || '',
-            article.badge || '',
-            article.episode != null ? `第${article.episode}話` : ''
-        ].join(' ').toLowerCase();
+        const haystack = [article.title, article.summary, article.text || '', article.badge || '', article.episode != null ? `第${article.episode}話` : ''].join(' ').toLowerCase();
         return haystack.includes(keyword);
     });
 }
@@ -190,46 +183,29 @@ function renderArticlesList(list) {
     });
 }
 
-function handleSearchInput() {
-    renderArticlesList(getFilteredArticles());
-}
+function handleSearchInput() { renderArticlesList(getFilteredArticles()); }
 
-function toggleSidebar() {
-    document.getElementById('sidebar-menu').classList.toggle('open');
-    document.getElementById('sidebar-overlay').classList.toggle('open');
-}
+function toggleSidebar() { document.getElementById('sidebar-menu').classList.toggle('open'); document.getElementById('sidebar-overlay').classList.toggle('open'); }
 
 function goToDetailPage(id) {
     activeArticleId = id;
-    const article = articlesData.find(function (a) {
-        return a.id === id;
-    });
-
-    if (!article) {
-        console.error('記事が見つかりません。ID:', id);
-        return;
-    }
-
+    const article = articlesData.find(function (a) { return a.id === id; });
+    if (!article) { console.error('記事が見つかりません。ID:', id); return; }
     document.getElementById('detail-episode').innerText = `第${article.episode}話`;
     document.getElementById('detail-title').innerText = article.title;
     document.getElementById('detail-text').innerHTML = article.text || '';
-
     currentQuizData = article.quiz || [];
     document.getElementById('quiz-start-view').style.display = 'block';
     document.getElementById('quiz-game-view').style.display = 'none';
     document.getElementById('quiz-result-view').style.display = 'none';
     document.getElementById('quiz-feedback').innerText = '';
     document.getElementById('quiz-feedback').className = 'quiz-feedback';
-
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('detail-page').style.display = 'block';
     document.body.classList.add('article-view');
     window.scrollTo({ top: 0, behavior: 'instant' });
-
     resetHighlightMarkers();
-    setTimeout(function () {
-        setupHighlightObserver();
-    }, 100);
+    setTimeout(function () { setupHighlightObserver(); }, 100);
 }
 
 function goToMainPage() {
@@ -237,205 +213,57 @@ function goToMainPage() {
     document.getElementById('main-page').style.display = 'block';
     document.body.classList.remove('article-view');
     resetHighlightMarkers();
-
-    if (highlightObserver) {
-        highlightObserver.disconnect();
-        highlightObserver = null;
-    }
-
+    if (highlightObserver) { highlightObserver.disconnect(); highlightObserver = null; }
     currentQuizData = [];
     currentQuestionIndex = 0;
     quizScore = 0;
     window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
-function resetHighlightMarkers() {
-    const markers = document.querySelectorAll('.red-marker, .highlight-marker');
-    markers.forEach(function (marker) {
-        marker.classList.remove('active');
-    });
-}
+function resetHighlightMarkers() { const markers = document.querySelectorAll('.red-marker, .highlight-marker'); markers.forEach(function (marker) { marker.classList.remove('active'); }); }
 
 function setupHighlightObserver() {
-    if (highlightObserver) {
-        highlightObserver.disconnect();
-        highlightObserver = null;
-    }
-
+    if (highlightObserver) { highlightObserver.disconnect(); highlightObserver = null; }
     const markers = document.querySelectorAll('#detail-text .red-marker, #detail-text .highlight-marker');
     if (markers.length === 0) return;
-
-    highlightObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, {
-        root: null,
-        rootMargin: '-15% 0px -20% 0px',
-        threshold: 0
-    });
-
-    markers.forEach(function (marker) {
-        highlightObserver.observe(marker);
-    });
+    highlightObserver = new IntersectionObserver(function (entries) { entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { root: null, rootMargin: '-15% 0px -20% 0px', threshold: 0 });
+    markers.forEach(function (marker) { highlightObserver.observe(marker); });
 }
 
 function startQuizGame() {
-    if (!currentQuizData || currentQuizData.length === 0) {
-        alert('このページにはクイズが登録されていません。');
-        return;
-    }
-
-    currentQuestionIndex = 0;
-    quizScore = 0;
-    document.getElementById('quiz-start-view').style.display = 'none';
-    document.getElementById('quiz-result-view').style.display = 'none';
-    document.getElementById('quiz-game-view').style.display = 'block';
-    showQuestion();
+    if (!currentQuizData || currentQuizData.length === 0) { alert('このページにはクイズが登録されていません。'); return; }
+    currentQuestionIndex = 0; quizScore = 0; document.getElementById('quiz-start-view').style.display = 'none'; document.getElementById('quiz-result-view').style.display = 'none'; document.getElementById('quiz-game-view').style.display = 'block'; showQuestion();
 }
 
 function restartQuizGame() { startQuizGame(); }
 
 function showQuestion() {
-    const currentQuiz = currentQuizData[currentQuestionIndex];
-    if (!currentQuiz) {
-        endQuizGame();
-        return;
-    }
-
+    const currentQuiz = currentQuizData[currentQuestionIndex]; if (!currentQuiz) { endQuizGame(); return; }
     document.getElementById('quiz-progress').innerText = `第 ${currentQuestionIndex + 1} 問 / 全 ${currentQuizData.length} 問`;
     document.getElementById('quiz-question').innerText = currentQuiz.question;
-
-    const feedback = document.getElementById('quiz-feedback');
-    feedback.innerText = '';
-    feedback.className = 'quiz-feedback';
-
-    const container = document.getElementById('quiz-options-container');
-    container.innerHTML = '';
-
-    currentQuiz.choices.forEach(function (choice, index) {
-        const btn = document.createElement('button');
-        btn.className = 'more-btn';
-        btn.innerText = choice;
-        btn.onclick = function () {
-            checkAnswer(index);
-        };
-        container.appendChild(btn);
-    });
+    const feedback = document.getElementById('quiz-feedback'); feedback.innerText = ''; feedback.className = 'quiz-feedback';
+    const container = document.getElementById('quiz-options-container'); container.innerHTML = '';
+    currentQuiz.choices.forEach(function (choice, index) { const btn = document.createElement('button'); btn.className = 'more-btn'; btn.innerText = choice; btn.onclick = function () { checkAnswer(index); }; container.appendChild(btn); });
 }
 
 function checkAnswer(selectedIndex) {
-    const currentQuiz = currentQuizData[currentQuestionIndex];
-    if (!currentQuiz) return;
-
-    const buttons = document.querySelectorAll('#quiz-options-container .more-btn');
-    buttons.forEach(function (btn) {
-        btn.disabled = true;
-        btn.style.opacity = '0.7';
-    });
-
-    if (selectedIndex === currentQuiz.correctIndex) {
-        quizScore++;
-        playSound('correct');
-        showQuizFeedback('⭕ 正解！', 'correct');
-    } else {
-        playSound('wrong');
-        showQuizFeedback('❌ 不正解！', 'wrong');
-    }
-
-    setTimeout(function () {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < currentQuizData.length) {
-            showQuestion();
-        } else {
-            endQuizGame();
-        }
-    }, 900);
+    const currentQuiz = currentQuizData[currentQuestionIndex]; if (!currentQuiz) return; const buttons = document.querySelectorAll('#quiz-options-container .more-btn'); buttons.forEach(function (btn) { btn.disabled = true; btn.style.opacity = '0.7'; });
+    if (selectedIndex === currentQuiz.correctIndex) { quizScore++; playSound('correct'); showQuizFeedback('⭕ 正解！', 'correct'); } else { playSound('wrong'); showQuizFeedback('❌ 不正解！', 'wrong'); }
+    setTimeout(function () { currentQuestionIndex++; if (currentQuestionIndex < currentQuizData.length) { showQuestion(); } else { endQuizGame(); } }, 900);
 }
 
-function showQuizFeedback(message, type) {
-    const feedback = document.getElementById('quiz-feedback');
-    feedback.innerText = message;
-    feedback.className = 'quiz-feedback show ' + type;
-}
+function showQuizFeedback(message, type) { const feedback = document.getElementById('quiz-feedback'); feedback.innerText = message; feedback.className = 'quiz-feedback show ' + type; }
 
-function endQuizGame() {
-    document.getElementById('quiz-game-view').style.display = 'none';
-    document.getElementById('quiz-result-view').style.display = 'block';
-    document.getElementById('quiz-result-score').innerText = `${quizScore} / ${currentQuizData.length}`;
+function endQuizGame() { document.getElementById('quiz-game-view').style.display = 'none'; document.getElementById('quiz-result-view').style.display = 'block'; document.getElementById('quiz-result-score').innerText = `${quizScore} / ${currentQuizData.length}`;
+    if (quizScore === currentQuizData.length) { document.getElementById('quiz-result-icon').innerText = '🎉'; document.getElementById('quiz-result-title').innerText = '全問正解！おめでとう！'; document.getElementById('celebration-overlay').style.display = 'flex'; for (let i = 0; i < 30; i++) { createParticle(); } } else { document.getElementById('quiz-result-icon').innerText = '📝'; document.getElementById('quiz-result-title').innerText = 'クイズ終了！'; } }
 
-    if (quizScore === currentQuizData.length) {
-        document.getElementById('quiz-result-icon').innerText = '🎉';
-        document.getElementById('quiz-result-title').innerText = '全問正解！おめでとう！';
-        document.getElementById('celebration-overlay').style.display = 'flex';
-        for (let i = 0; i < 30; i++) {
-            createParticle();
-        }
-    } else {
-        document.getElementById('quiz-result-icon').innerText = '📝';
-        document.getElementById('quiz-result-title').innerText = 'クイズ終了！';
-    }
-}
+function createParticle() { const overlay = document.getElementById('celebration-overlay'); const p = document.createElement('div'); p.className = 'particle'; p.innerText = ['🌸', '✨', '🎉', '🌟', '🎨'][Math.floor(Math.random() * 5)]; p.style.left = '50%'; p.style.top = '50%'; const x = (Math.random() - 0.5) * window.innerWidth * 0.8; const y = (Math.random() - 0.5) * window.innerHeight * 0.8; p.style.setProperty('--x', `${x}px`); p.style.setProperty('--y', `${y}px`); overlay.appendChild(p); setTimeout(function () { p.remove(); }, 1500); }
 
-function createParticle() {
-    const overlay = document.getElementById('celebration-overlay');
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.innerText = ['🌸', '✨', '🎉', '🌟', '🎨'][Math.floor(Math.random() * 5)];
-    p.style.left = '50%';
-    p.style.top = '50%';
+function closeCelebration() { document.getElementById('celebration-overlay').style.display = 'none'; const particles = document.querySelectorAll('.particle'); particles.forEach(function (p) { p.remove(); }); }
 
-    const x = (Math.random() - 0.5) * window.innerWidth * 0.8;
-    const y = (Math.random() - 0.5) * window.innerHeight * 0.8;
-    p.style.setProperty('--x', `${x}px`);
-    p.style.setProperty('--y', `${y}px`);
+function createStars() { const starsContainer = document.getElementById('stars'); if (!starsContainer) return; starsContainer.innerHTML = ''; const starCount = window.innerWidth < 600 ? 100 : 180; for (let i = 0; i < starCount; i++) { const star = document.createElement('div'); star.className = 'space-star'; if (Math.random() < 0.15) star.classList.add('big'); star.style.left = Math.random() * 100 + '%'; star.style.top = Math.random() * 100 + '%'; star.style.setProperty('--twinkle-time', (2 + Math.random() * 4) + 's'); star.style.animationDelay = (-Math.random() * 5) + 's'; starsContainer.appendChild(star); } }
 
-    overlay.appendChild(p);
-    setTimeout(function () {
-        p.remove();
-    }, 1500);
-}
-
-function closeCelebration() {
-    document.getElementById('celebration-overlay').style.display = 'none';
-    const particles = document.querySelectorAll('.particle');
-    particles.forEach(function (p) {
-        p.remove();
-    });
-}
-
-function createStars() {
-    const starsContainer = document.getElementById('stars');
-    if (!starsContainer) return;
-    starsContainer.innerHTML = '';
-    const starCount = window.innerWidth < 600 ? 100 : 180;
-
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'space-star';
-        if (Math.random() < 0.15) star.classList.add('big');
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.setProperty('--twinkle-time', (2 + Math.random() * 4) + 's');
-        star.style.animationDelay = (-Math.random() * 5) + 's';
-        starsContainer.appendChild(star);
-    }
-}
-
-function createShootingStar() {
-    const container = document.getElementById('shooting-stars');
-    if (!container) return;
-
-    const star = document.createElement('div');
-    star.className = 'shooting-star';
-    star.style.left = (20 + Math.random() * 100) + '%';
-    star.style.top = Math.random() * 70 + '%';
-    container.appendChild(star);
-
-    setTimeout(function () { star.remove(); }, 1800);
-}
+function createShootingStar() { const container = document.getElementById('shooting-stars'); if (!container) return; const star = document.createElement('div'); star.className = 'shooting-star'; star.style.left = (20 + Math.random() * 100) + '%'; star.style.top = Math.random() * 70 + '%'; container.appendChild(star); setTimeout(function () { star.remove(); }, 1800); }
 
 window.addEventListener('load', async function () {
     await loadArticles();
@@ -445,26 +273,10 @@ window.addEventListener('load', async function () {
     const searchInput = document.getElementById('article-search');
     const clearButton = document.getElementById('clear-search-btn');
 
-    if (searchInput) {
-        searchInput.addEventListener('input', handleSearchInput);
-    }
+    if (searchInput) { searchInput.addEventListener('input', handleSearchInput); }
+    if (clearButton) { clearButton.addEventListener('click', function () { if (searchInput) { searchInput.value = ''; renderArticlesList(getFilteredArticles()); } }); }
 
-    if (clearButton) {
-        clearButton.addEventListener('click', function () {
-            if (searchInput) {
-                searchInput.value = '';
-                renderArticlesList(getFilteredArticles());
-            }
-        });
-    }
-
-    setInterval(function () {
-        if (!document.body.classList.contains('article-view')) {
-            createShootingStar();
-        }
-    }, 3000 + Math.random() * 4000);
+    setInterval(function () { if (!document.body.classList.contains('article-view')) { createShootingStar(); } }, 3000 + Math.random() * 4000);
 });
 
-window.addEventListener('resize', function () {
-    createStars();
-});
+window.addEventListener('resize', function () { createStars(); });
