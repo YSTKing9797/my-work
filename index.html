@@ -31,6 +31,9 @@
         <div class="nebula nebula-2"></div>
         <div class="nebula nebula-3"></div>
 
+        <!-- Canvas ベースの星描画（DOMの #stars はフォールバックとして残す） -->
+        <canvas id="stars-canvas" aria-hidden="true"></canvas>
+
         <div id="stars"></div>
 
         <div id="shooting-stars"></div>
@@ -342,7 +345,7 @@
             ================================== -->
 
             <p class="disclaimer">
-                このウェブサイトでは、様々な資料や情報を元に記事を作成しています。ただし、情報の誤りや、筆者の推測・解釈が含まれている可能性があります。重要な情報については、このウェブサイトの内容だけを判断材料にせず、信頼できる情報源で必ずご確認ください。
+                このウェブサイトでは、様々な資料や情報を元に記事を作成しています。ただし、情報の誤りや、筆者の推測・解釈が含まれている場合があります。
             </p>
 
 
@@ -394,7 +397,7 @@
          JavaScript
     ========================================== -->
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
 </body>
 
