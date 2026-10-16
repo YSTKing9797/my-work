@@ -2,12 +2,7 @@
 // 🌌 1. 記事のデータベース
 // ============================================================
 
-const articlesData = [
-
-    // (省略) 実際の articles データは既存のままリポジトリにあります。
-
-];
-
+let articlesData = [];
 
 
 // ============================================================
@@ -25,6 +20,8 @@ let isSoundOn = true;
 let currentQuizData = [];
 
 let highlightObserver = null;
+
+let _prevFocus = null;
 
 
 // ============================================================
@@ -203,6 +200,13 @@ function changeTextSize(size) {
         textButtons[2].classList.add('active');
     }
 
+    try {
+        localStorage.setItem('textSize', size);
+    }
+    catch (e) {
+        // noop
+    }
+
 }
 
 
@@ -230,6 +234,12 @@ function setSound(status) {
             !status
         );
 
+    try {
+        localStorage.setItem('soundOn', status ? '1' : '0');
+    }
+    catch (e) {
+        // noop
+    }
 
     if (isSoundOn) {
         playSound('click');
@@ -357,15 +367,49 @@ function renderArticlesList(list) {
 
 function toggleSidebar() {
 
-    document
-        .getElementById('sidebar-menu')
-        .classList.toggle('open');
+    const sidebar = document.getElementById('sidebar-menu');
+    const overlay = document.getElementById('sidebar-overlay');
+    const menuBtn = document.getElementById('menu-trigger');
+    const closeBtn = document.getElementById('close-sidebar-btn');
 
-    document
-        .getElementById('sidebar-overlay')
-        .classList.toggle('open');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+
+    const open = sidebar.classList.contains('open');
+
+    // aria 管理
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (sidebar) sidebar.setAttribute('aria-hidden', open ? 'false' : 'true');
+
+    if (open) {
+        // フォーカス管理
+        _prevFocus = document.activeElement;
+        // 最初に閉じるボタンへフォーカス
+        if (closeBtn) closeBtn.focus();
+        // Esc で閉じる
+    }
+    else {
+        // 閉じたら前の要素へフォーカスを戻す
+        try {
+            if (_prevFocus && typeof _prevFocus.focus === 'function') _prevFocus.focus();
+        }
+        catch (e) {
+            // noop
+        }
+        _prevFocus = null;
+    }
 
 }
+
+// Esc キーでサイドバーを閉じる
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const sidebar = document.getElementById('sidebar-menu');
+        if (sidebar && sidebar.classList.contains('open')) {
+            toggleSidebar();
+        }
+    }
+});
 
 
 // ============================================================
@@ -418,13 +462,16 @@ function goToDetailPage(id) {
 
 
     // --------------------------------------------
-    // 本文
+    // 本文（サニタイズして挿入）
     // --------------------------------------------
-
-    document
-        .getElementById('detail-text')
-        .innerHTML =
-        article.text;
+    const detailTextEl = document.getElementById('detail-text');
+    if (typeof DOMPurify !== 'undefined') {
+        detailTextEl.innerHTML = DOMPurify.sanitize(article.text);
+    }
+    else {
+        // フォールバックでタグをエスケープして表示
+        detailTextEl.textContent = article.text.replace(/<[^>]*>/g, '');
+    }
 
 
     // --------------------------------------------
@@ -659,7 +706,6 @@ function setupHighlightObserver() {
     });
 
 }
-
 
 
 // ============================================================
@@ -1121,7 +1167,7 @@ function closeCelebration() {
 
 
 // ============================================================
-// 🌟 Canvas ベースの星を生成（新実装）
+// 🌟 Canvas ベースの星を生成（既存）
 // ============================================================
 
 let starsCanvas, starsCtx;
@@ -1260,24 +1306,72 @@ function spawnShootingStar() {
 // 🚀 最初の起動
 // ============================================================
 
+function loadSettings() {
+    try {
+        const textSize = localStorage.getItem('textSize') || 'normal';
+        changeTextSize(textSize);
+    }
+    catch (e) {}
+
+    try {
+        const soundOn = localStorage.getItem('soundOn');
+        if (soundOn === null) {
+            setSound(true);
+        }
+        else {
+            setSound(soundOn === '1');
+        }
+    }
+    catch (e) {
+        setSound(true);
+    }
+}
+
 window.addEventListener(
     'load',
     function() {
 
-        const sortedArticles =
-            [...articlesData].sort(
-                function(a, b) {
+        // 設定の復元
+        loadSettings();
 
-                    return new Date(b.date) -
-                           new Date(a.date);
-
+        // articles.json を fetch して記事を読み込む
+        fetch('articles.json')
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (Array.isArray(data) && data.length > 0) {
+                    articlesData = data;
                 }
-            );
+                else if (data && data.articles) {
+                    // もし構造が { articles: [...] } の場合
+                    articlesData = data.articles;
+                }
 
+                const sortedArticles =
+                    [...articlesData].sort(
+                        function(a, b) {
 
-        renderArticlesList(
-            sortedArticles
-        );
+                            return new Date(b.date) -
+                                   new Date(a.date);
+
+                        }
+                    );
+
+                renderArticlesList(sortedArticles);
+            })
+            .catch(function(err) {
+                console.warn('articles.json の読み込みに失敗しました。既存の articlesData を使用します。', err);
+                const sortedArticles =
+                    [...articlesData].sort(
+                        function(a, b) {
+
+                            return new Date(b.date) -
+                                   new Date(a.date);
+
+                        }
+                    );
+
+                renderArticlesList(sortedArticles);
+            });
 
 
         // Canvasベースの星を初期化
