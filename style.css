@@ -1,16 +1,21 @@
+
 /* =========================================
-   🌌 宇宙背景
+   🌌 宇宙雑学 CSS
+   第1回：基本設定・宇宙背景・ヘッダー
+========================================= */
+
+
+/* =========================================
+   基本設定
 ========================================= */
 
 html {
     background: #020611;
+    scroll-behavior: smooth;
 }
 
-
 body {
-
     background: #020611;
-
     color: #333333;
 
     font-family:
@@ -20,414 +25,16 @@ body {
         sans-serif;
 
     line-height: 1.8;
-
     margin: 0;
-
     padding: 0;
-
     min-height: 100vh;
-
     overflow-x: hidden;
-
     position: relative;
-
 }
 
 
 /* =========================================
-   🌌 宇宙背景本体
-========================================= */
-
-#space-background {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    z-index: 0;
-
-    background:
-
-        radial-gradient(
-            ellipse at 20% 30%,
-            rgba(25, 70, 150, 0.35),
-            transparent 45%
-        ),
-
-        radial-gradient(
-            ellipse at 80% 70%,
-            rgba(90, 25, 160, 0.30),
-            transparent 45%
-        ),
-
-        radial-gradient(
-            ellipse at 50% 100%,
-            rgba(0, 120, 190, 0.20),
-            transparent 50%
-        ),
-
-        #020611;
-}
-
-
-/* =========================================
-   🌌 星雲
-========================================= */
-
-.nebula {
-
-    position: absolute;
-
-    width: 700px;
-    height: 700px;
-
-    border-radius: 50%;
-
-    filter: blur(70px);
-
-    opacity: 0.45;
-
-    animation:
-        nebulaMove
-        18s
-        ease-in-out
-        infinite
-        alternate;
-}
-
-
-.nebula-1 {
-
-    top: -300px;
-    left: -250px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0, 170, 255, 0.55),
-            rgba(20, 60, 180, 0.2),
-            transparent 70%
-        );
-}
-
-
-.nebula-2 {
-
-    right: -300px;
-    top: 20%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(150, 50, 255, 0.45),
-            rgba(70, 20, 150, 0.18),
-            transparent 70%
-        );
-
-    animation-duration: 24s;
-}
-
-
-.nebula-3 {
-
-    left: 20%;
-    bottom: -500px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0, 220, 255, 0.30),
-            rgba(20, 80, 170, 0.12),
-            transparent 70%
-        );
-
-    animation-duration: 30s;
-}
-
-
-@keyframes nebulaMove {
-
-    0% {
-        transform:
-            translate(0, 0)
-            scale(0.9);
-
-        opacity: 0.3;
-    }
-
-    50% {
-        transform:
-            translate(100px, 70px)
-            scale(1.15);
-
-        opacity: 0.55;
-    }
-
-    100% {
-        transform:
-            translate(-60px, 120px)
-            scale(1.05);
-
-        opacity: 0.4;
-    }
-}
-
-
-/* =========================================
-   ⭐ 星
-========================================= */
-
-#stars {
-
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    top: 0;
-    left: 0;
-}
-
-
-.space-star {
-
-    position: absolute;
-
-    width: 2px;
-    height: 2px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    box-shadow:
-        0 0 4px white,
-        0 0 8px rgba(150, 220, 255, 0.8);
-
-    animation:
-        starTwinkle
-        var(--twinkle-time)
-        ease-in-out
-        infinite;
-}
-
-
-.space-star.big {
-
-    width: 3px;
-    height: 3px;
-
-    box-shadow:
-        0 0 5px white,
-        0 0 12px rgba(100, 200, 255, 0.9),
-        0 0 20px rgba(100, 160, 255, 0.5);
-}
-
-
-@keyframes starTwinkle {
-
-    0% {
-        opacity: 0.15;
-        transform: scale(0.7);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.5);
-    }
-
-    100% {
-        opacity: 0.2;
-        transform: scale(0.7);
-    }
-}
-
-
-/* =========================================
-   💫 宇宙を漂う光
-========================================= */
-
-.space-glow {
-
-    position: absolute;
-
-    width: 250px;
-    height: 250px;
-
-    border-radius: 50%;
-
-    filter: blur(40px);
-
-    opacity: 0.2;
-
-    animation:
-        glowFloat
-        15s
-        ease-in-out
-        infinite
-        alternate;
-}
-
-
-.glow-1 {
-
-    top: 25%;
-    left: 15%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(50, 180, 255, 0.7),
-            transparent 70%
-        );
-}
-
-
-.glow-2 {
-
-    right: 15%;
-    bottom: 15%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(180, 80, 255, 0.6),
-            transparent 70%
-        );
-
-    animation-delay: -7s;
-}
-
-
-@keyframes glowFloat {
-
-    0% {
-        transform:
-            translate(0, 0)
-            scale(0.8);
-
-        opacity: 0.15;
-    }
-
-    50% {
-        transform:
-            translate(100px, -80px)
-            scale(1.2);
-
-        opacity: 0.35;
-    }
-
-    100% {
-        transform:
-            translate(-70px, 80px)
-            scale(0.9);
-
-        opacity: 0.2;
-    }
-}
-
-
-/* =========================================
-   🌠 流れ星
-========================================= */
-
-#shooting-stars {
-
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-}
-
-
-.shooting-star {
-
-    position: absolute;
-
-    width: 150px;
-    height: 2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.95),
-            rgba(130,210,255,0.8)
-        );
-
-    border-radius: 50%;
-
-    transform: rotate(-25deg);
-
-    opacity: 0;
-
-    filter:
-        drop-shadow(
-            0 0 5px
-            rgba(100,200,255,0.8)
-        );
-
-    animation:
-        shootingStar
-        1.8s
-        linear
-        forwards;
-}
-
-
-@keyframes shootingStar {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translate(0, 0)
-            rotate(-25deg);
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    80% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(-700px, 400px)
-            rotate(-25deg);
-    }
-}
-
-
-/* =========================================
-   📄 サイト本体
-========================================= */
-
-.main-header,
-.container {
-
-    position: relative;
-
-    z-index: 2;
-}
-
-
-/* =========================================
-   🔤 文字サイズ
+   文字サイズ設定
 ========================================= */
 
 body.text-small {
@@ -470,11 +77,332 @@ body.text-large p {
 
 
 /* =========================================
+   🌌 宇宙背景本体
+========================================= */
+
+#space-background {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 20% 30%,
+            rgba(25, 70, 150, 0.35),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 80% 70%,
+            rgba(90, 25, 160, 0.30),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(0, 120, 190, 0.20),
+            transparent 50%
+        ),
+        #020611;
+}
+
+
+/* =========================================
+   🌌 星雲
+========================================= */
+
+.nebula {
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.45;
+
+    animation:
+        nebulaMove 18s ease-in-out infinite alternate;
+
+    will-change: transform;
+}
+
+
+.nebula-1 {
+    top: -300px;
+    left: -250px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 170, 255, 0.55),
+            rgba(20, 60, 180, 0.2),
+            transparent 70%
+        );
+}
+
+
+.nebula-2 {
+    right: -300px;
+    top: 20%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150, 50, 255, 0.45),
+            rgba(70, 20, 150, 0.18),
+            transparent 70%
+        );
+
+    animation-duration: 24s;
+}
+
+
+.nebula-3 {
+    left: 20%;
+    bottom: -500px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 220, 255, 0.30),
+            rgba(20, 80, 170, 0.12),
+            transparent 70%
+        );
+
+    animation-duration: 30s;
+}
+
+
+@keyframes nebulaMove {
+    0% {
+        transform: translate(0, 0) scale(0.9);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate(100px, 70px) scale(1.15);
+        opacity: 0.55;
+    }
+
+    100% {
+        transform: translate(-60px, 120px) scale(1.05);
+        opacity: 0.4;
+    }
+}
+
+
+/* =========================================
+   ⭐ 星
+========================================= */
+
+#stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.space-star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+    background: white;
+
+    box-shadow:
+        0 0 4px white,
+        0 0 8px rgba(150, 220, 255, 0.8);
+
+    animation:
+        starTwinkle var(--twinkle-time) ease-in-out infinite;
+}
+
+
+.space-star.big {
+    width: 3px;
+    height: 3px;
+
+    box-shadow:
+        0 0 5px white,
+        0 0 12px rgba(100, 200, 255, 0.9),
+        0 0 20px rgba(100, 160, 255, 0.5);
+}
+
+
+@keyframes starTwinkle {
+    0% {
+        opacity: 0.15;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+}
+
+
+/* =========================================
+   💫 宇宙を漂う光
+========================================= */
+
+.space-glow {
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.2;
+
+    animation:
+        glowFloat 15s ease-in-out infinite alternate;
+
+    will-change: transform;
+}
+
+
+.glow-1 {
+    top: 25%;
+    left: 15%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(50, 180, 255, 0.7),
+            transparent 70%
+        );
+}
+
+
+.glow-2 {
+    right: 15%;
+    bottom: 15%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180, 80, 255, 0.6),
+            transparent 70%
+        );
+
+    animation-delay: -7s;
+}
+
+
+@keyframes glowFloat {
+    0% {
+        transform: translate(0, 0) scale(0.8);
+        opacity: 0.15;
+    }
+
+    50% {
+        transform: translate(100px, -80px) scale(1.2);
+        opacity: 0.35;
+    }
+
+    100% {
+        transform: translate(-70px, 80px) scale(0.9);
+        opacity: 0.2;
+    }
+}
+
+
+/* =========================================
+   🌠 流れ星
+========================================= */
+
+#shooting-stars {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+.shooting-star {
+    position: absolute;
+
+    width: 150px;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.95),
+            rgba(130, 210, 255, 0.8)
+        );
+
+    border-radius: 50%;
+
+    transform: rotate(-25deg);
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 5px rgba(100, 200, 255, 0.8)
+        );
+
+    animation:
+        shootingStar 1.8s linear forwards;
+}
+
+
+@keyframes shootingStar {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(-25deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-700px, 400px) rotate(-25deg);
+    }
+}
+
+
+/* =========================================
+   📄 サイト本体の重なり順
+========================================= */
+
+.main-header,
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================
    👑 ヘッダー
 ========================================= */
 
 .main-header {
-
     background:
         linear-gradient(
             135deg,
@@ -485,64 +413,46 @@ body.text-large p {
     color: white;
 
     display: flex;
-
     align-items: center;
 
     padding: 20px 30px;
-
     margin: 20px;
 
     border-radius: 20px;
 
     border:
-        2px solid
-        rgba(255, 255, 255, 0.4);
+        2px solid rgba(255, 255, 255, 0.4);
 
     box-shadow:
-
-        0 10px 35px
-        rgba(30, 120, 220, 0.35),
-
-        0 0 30px
-        rgba(90, 70, 255, 0.15),
-
-        inset 0 2px 4px
-        rgba(255, 255, 255, 0.3);
+        0 10px 35px rgba(30, 120, 220, 0.35),
+        0 0 30px rgba(90, 70, 255, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 
 .header-title-area {
-
     text-align: center;
-
     flex-grow: 1;
-
     margin-right: 40px;
 }
 
 
 .main-header h1 {
-
     font-size: 32px;
-
     margin: 0;
 
     letter-spacing: 4px;
 
     text-shadow:
-        2px 3px 6px
-        rgba(0, 0, 0, 0.25);
+        2px 3px 6px rgba(0, 0, 0, 0.25);
 
     font-weight: bold;
 }
 
 
 .main-header p.subtitle {
-
-    margin: 5px 0 0 0;
-
+    margin: 5px 0 0;
     font-size: 14px;
-
     font-weight: 500;
 }
 
@@ -552,146 +462,131 @@ body.text-large p {
 ========================================= */
 
 .menu-trigger-btn {
-
     background: none;
-
     border: none;
 
     color: white;
-
     font-size: 32px;
 
     cursor: pointer;
-
     padding: 10px;
 }
 
+
+/* =========================================
+   アニメーションを控えたい端末への配慮
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .nebula,
+    .space-glow,
+    .space-star,
+    .shooting-star {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
 
 /* =========================================
    🌿 サイドバー
 ========================================= */
 
 .sidebar {
-
     position: fixed;
-
     top: 0;
-
-    left: -300px;
+    left: -320px;
 
     width: 260px;
+    height: 100vh;
+    height: 100dvh;
 
-    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
 
-    background-color: white;
+    background-color: #ffffff;
 
-    box-shadow:
-        4px 0 15px
-        rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
 
     z-index: 2000;
-
     padding: 20px;
 
-    transition:
-        left 0.3s ease;
+    transition: left 0.3s ease;
 
     color: #333333;
 }
-
 
 .sidebar.open {
     left: 0;
 }
 
-
 .sidebar-header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
-    border-bottom:
-        1px solid #e2e8f0;
-
+    border-bottom: 1px solid #e2e8f0;
     padding-bottom: 10px;
 }
 
-
 .sidebar-header h3 {
-
     margin: 0;
-
     font-size: 18px;
 }
 
-
 .close-sidebar-btn {
-
     background: none;
-
     border: none;
 
-    font-size: 24px;
-
+    font-size: 26px;
     cursor: pointer;
 
-    color: #aaa;
+    color: #888888;
 }
 
 
 /* =========================================
-   サイドメニュー
+   サイドメニューの項目
 ========================================= */
 
 .menu-section-title {
-
     font-size: 12px;
-
     color: #a0aec0;
 
     font-weight: bold;
 
     margin-top: 25px;
-
     margin-bottom: 8px;
 
     letter-spacing: 1px;
 }
 
-
 .sidebar-menu-item {
-
     display: block;
-
     width: 100%;
 
+    box-sizing: border-box;
     text-align: left;
 
     background: none;
-
     border: none;
 
     padding: 12px 10px;
 
     font-size: 15px;
-
     cursor: pointer;
 
-    color: #333;
-
+    color: #333333;
     border-radius: 6px;
 
     margin-bottom: 5px;
 }
 
-
 .sidebar-menu-item:hover {
-
-    background-color:
-        rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 
@@ -700,79 +595,56 @@ body.text-large p {
 ========================================= */
 
 .setting-row {
-
     display: flex;
-
     gap: 8px;
-
     margin-bottom: 10px;
 }
 
-
 .setting-btn {
-
     flex: 1;
 
     background-color: #edf2f7;
-
-    border:
-        1px solid #e2e8f0;
+    border: 1px solid #e2e8f0;
 
     padding: 8px;
 
     font-size: 14px;
-
     font-weight: bold;
 
     border-radius: 6px;
-
     cursor: pointer;
 
     color: #4a5568;
 }
 
-
 .setting-btn:hover {
-
-    background-color:
-        #e2e8f0;
+    background-color: #e2e8f0;
 }
 
-
 .setting-btn.active {
-
-    background-color:
-        #3182ce;
-
+    background-color: #3182ce;
     color: white;
-
-    border-color:
-        #3182ce;
+    border-color: #3182ce;
 }
 
 
 /* =========================================
-   背景の影
+   サイドメニューの背景
 ========================================= */
 
 .overlay-shadow {
-
     display: none;
 
     position: fixed;
-
-    top: 0;
-    left: 0;
+    inset: 0;
 
     width: 100%;
     height: 100%;
 
-    background-color:
-        rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 
     z-index: 1500;
 }
-
 
 .overlay-shadow.open {
     display: block;
@@ -780,70 +652,75 @@ body.text-large p {
 
 
 /* =========================================
-   一覧
+   📚 記事一覧
 ========================================= */
 
 .container {
-
     max-width: 800px;
 
     margin: 0 auto;
 
-    padding:
-        10px 20px 20px 20px;
+    padding: 10px 20px 20px;
+    box-sizing: border-box;
 }
 
-
 .zatugaku-box {
+    background-color: rgba(255, 255, 255, 0.97);
 
-    background-color:
-        rgba(255, 255, 255, 0.97);
-
-    border-bottom:
-        2px solid #f0f0f0;
+    border-bottom: 2px solid #f0f0f0;
 
     padding: 30px;
-
     margin-bottom: 30px;
 
     border-radius: 12px;
 
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.18);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
+.zatugaku-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
 
 .article-top {
     display: flex;
     gap: 24px;
 }
 
-
-/* =========================================
-   📝 記事情報
-========================================= */
-
 .article-info-area {
-
     width: 100%;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: space-between;
 }
 
+.episode-label {
+    display: inline-block;
+
+    color: #3182ce;
+    font-size: 13px;
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+.article-info-area h2 {
+    color: #172033;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
 
 .article-summary {
-
     font-size: 14px;
+    color: #666666;
 
-    color: #666;
-
-    margin:
-        10px 0;
+    margin: 10px 0;
+    overflow-wrap: anywhere;
 }
 
 
@@ -852,93 +729,180 @@ body.text-large p {
 ========================================= */
 
 .btn-wrapper {
-
     text-align: right;
-
     margin-top: 15px;
 }
 
-
 .more-btn {
-
-    background-color:
-        #3182ce;
-
+    background-color: #3182ce;
     color: white;
 
     border: none;
-
-    padding:
-        10px 24px;
+    padding: 10px 24px;
 
     font-size: 14px;
-
     font-weight: bold;
 
-    border-radius: 4px;
-
+    border-radius: 6px;
     cursor: pointer;
 
     transition:
-        background 0.2s,
-        transform 0.15s,
-        box-shadow 0.15s;
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
-
 
 .more-btn:hover {
+    background-color: #2b6cb0;
 
-    background-color:
-        #2b6cb0;
+    transform: translateY(-2px);
 
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 5px 12px
-        rgba(49, 130, 206, 0.25);
+    box-shadow: 0 5px 12px rgba(49, 130, 206, 0.25);
 }
 
-
 .more-btn:disabled {
-
     cursor: default;
-
     transform: none;
+    box-shadow: none;
 }
 
 
 /* =========================================
-   📖 詳細ページ
+   📖 記事詳細ページ
 ========================================= */
 
 .detail-page-content {
-
-    background-color:
-        #ffffff;
+    background-color: #ffffff;
 
     padding: 30px;
-
     border-radius: 16px;
 
-    box-shadow:
-        0 4px 20px
-        rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 
     margin-top: 20px;
+    overflow-wrap: anywhere;
+}
+
+.detail-episode {
+    color: #3182ce;
+    font-size: 14px;
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+.detail-title {
+    color: #111111;
+
+    border-bottom: 3px solid #4faedb;
+
+    padding-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    line-height: 1.5;
 }
 
 
-.detail-title {
+/* =========================================
+   💎 お気に入りボタン
+   記事詳細画面だけに表示
+========================================= */
 
-    color: #111;
+.favorite-area {
+    display: flex;
+    justify-content: flex-end;
+    margin: 12px 0 25px;
+}
 
-    border-bottom:
-        3px solid #4faedb;
+.favorite-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
 
-    padding-bottom: 12px;
+    min-height: 44px;
+    padding: 9px 17px;
 
-    margin-top: 0;
+    color: #526078;
+
+    background:
+        linear-gradient(135deg, #ffffff, #f1f5fb);
+
+    border: 1px solid #d7dfec;
+    border-radius: 999px;
+
+    box-shadow: 0 3px 10px rgba(20, 40, 80, 0.07);
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.favorite-toggle-btn:hover {
+    transform: translateY(-2px);
+
+    border-color: #a5b4fc;
+
+    box-shadow: 0 6px 16px rgba(80, 90, 180, 0.14);
+}
+
+.favorite-toggle-btn:active {
+    transform: scale(0.97);
+}
+
+.favorite-toggle-btn:focus-visible {
+    outline: 3px solid rgba(99, 102, 241, 0.45);
+    outline-offset: 3px;
+}
+
+.favorite-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    font-family: Arial, sans-serif;
+    font-size: 27px;
+    line-height: 1;
+
+    color: #718096;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* 登録済みの状態 */
+.favorite-toggle-btn.is-favorite {
+    color: #a61b52;
+
+    background:
+        linear-gradient(135deg, #fff0f5, #ffe4ed);
+
+    border-color: #f3a5c3;
+
+    box-shadow: 0 4px 14px rgba(214, 51, 108, 0.12);
+}
+
+.favorite-toggle-btn.is-favorite .favorite-icon {
+    color: #e83e78;
+    transform: scale(1.08);
+}
+
+.favorite-toggle-btn.is-favorite:hover {
+    border-color: #e879a2;
+    box-shadow: 0 6px 18px rgba(214, 51, 108, 0.2);
 }
 
 
@@ -947,47 +911,29 @@ body.text-large p {
 ========================================= */
 
 .detail-text {
-
     line-height: 2;
 
     word-break: normal;
-
-    overflow-wrap: break-word;
-
+    overflow-wrap: anywhere;
     white-space: normal;
 }
 
-
-/*
-   HTML側で
-   <br>
-   を入れた部分はそのまま改行する
-*/
-
 .detail-text p {
-
-    margin:
-        0 0 18px 0;
+    margin: 0 0 18px;
 }
 
 
 /* =========================================
-   ★付き小見出し
-   赤色マーカー専用
+   ★ 赤色マーカー
 ========================================= */
 
 .red-marker {
-
     position: relative;
-
     display: inline;
 
     font-weight: bold;
-
-    /* 文章の色は通常のまま */
     color: inherit;
 
-    /* 赤いマーカー */
     background:
         linear-gradient(
             transparent 55%,
@@ -996,51 +942,33 @@ body.text-large p {
             transparent 90%
         );
 
-    background-size:
-        0% 100%;
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
 
-    background-repeat:
-        no-repeat;
-
-    transition:
-        background-size 0.8s ease;
+    transition: background-size 0.8s ease;
 
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }
 
-
-/* スクロールしたら赤マーカーを表示 */
-
 .red-marker.active {
-
-    background-size:
-        100% 100%;
+    background-size: 100% 100%;
 }
 
-
-/* 小見出しの前後を1行程度空ける */
-
 .detail-text p:has(.red-marker) {
-
     margin-top: 28px;
-
     margin-bottom: 28px;
 }
 
 
 /* =========================================
    🟨 黄色マーカー
-   本文の重要部分専用
 ========================================= */
 
 .highlight-marker {
-
     position: relative;
-
     display: inline;
 
-    /* 黄色マーカーでも文字は黒のまま */
     color: inherit;
 
     background:
@@ -1051,507 +979,735 @@ body.text-large p {
             transparent 92%
         );
 
-    background-size:
-        0% 100%;
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
 
-    background-repeat:
-        no-repeat;
-
-    transition:
-        background-size 0.8s ease;
+    transition: background-size 0.8s ease;
 
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }
 
-
-/* スクロールしたら黄色マーカーを表示 */
-
 .highlight-marker.active {
-
-    background-size:
-        100% 100%;
+    background-size: 100% 100%;
 }
-
-
-/* =========================================
-   🟥🟨 マーカー共通
-========================================= */
 
 .red-marker,
 .highlight-marker {
-
-    -webkit-box-decoration-break:
-        clone;
-
-    box-decoration-break:
-        clone;
-}
-
-
-
-/* =========================================
-   ❓ クイズ
-========================================= */
-
-#quiz-area {
-
-    background-color:
-        #fff9e6;
-
-    border:
-        2px dashed #ffb74d;
-
-    padding: 25px;
-
-    border-radius: 12px;
-
-    text-align: center;
-
-    margin-top: 40px;
-}
-
-
-#quiz-area h3 {
-
-    margin-top: 0;
-
-    color: #e65100;
-}
-
-
-.quiz-progress {
-
-    font-size: 14px;
-
-    color: #666;
-
-    margin-bottom: 10px;
-}
-
-
-.quiz-options {
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-top: 20px;
-}
-
-
-.quiz-options .more-btn {
-
-    width: 80%;
-
-    margin: 5px 0;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
 
 
 /* =========================================
-   ⭕❌ 正誤表示
-========================================= */
-
-.quiz-feedback {
-
-    min-height: 55px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 28px;
-
-    font-weight: bold;
-
-    margin: 10px 0;
-
-    opacity: 0;
-
-    transform:
-        scale(0.7);
-
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.quiz-feedback.show {
-
-    opacity: 1;
-
-    transform:
-        scale(1);
-}
-
-
-.quiz-feedback.correct {
-    color: #22a447;
-}
-
-
-.quiz-feedback.wrong {
-    color: #e53935;
-}
-
-
-/* =========================================
-   クイズ結果
-========================================= */
-
-.quiz-result-icon {
-
-    font-size: 60px;
-
-    margin-bottom: 10px;
-}
-
-
-.quiz-result-title {
-
-    font-size: 28px;
-
-    color: #e65100;
-
-    margin: 10px 0;
-}
-
-
-.quiz-result-score {
-
-    font-size: 42px;
-
-    font-weight: bold;
-
-    color: #3182ce;
-
-    margin:
-        10px 0 25px 0;
-}
-
-
-/* =========================================
-   戻るボタン
-========================================= */
-
-.back-btn-wrapper {
-
-    margin-top: 40px;
-
-    text-align: center;
-
-    border-top:
-        1px dashed #e2e8f0;
-
-    padding-top: 30px;
-}
-
-
-.back-btn {
-
-    background-color:
-        #6c757d;
-
-    color: white;
-
-    border: none;
-
-    padding:
-        12px 35px;
-
-    font-size: 15px;
-
-    font-weight: bold;
-
-    border-radius: 4px;
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s;
-
-    display: inline-block;
-}
-
-
-.back-btn:hover {
-    background-color: #5a6268;
-}
-
-
-/* =========================================
-   ⚠️ 注意書き
-========================================= */
-
-.disclaimer {
-
-    font-size: 13px;
-
-    color: #718096;
-
-    background-color: #f7fafc;
-
-    padding: 15px;
-
-    border-radius: 8px;
-
-    margin-top: 40px;
-
-    border-left:
-        4px solid #cbd5e0;
-
-    line-height: 1.6;
-
-    text-align: left;
-}
-
-
-/* =========================================
-   🎉 お祝い演出
-========================================= */
-
-#celebration-overlay {
-
-    display: none;
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-color:
-        rgba(255, 255, 255, 0.95);
-
-    z-index: 3000;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-direction: column;
-
-    font-size: 40px;
-
-    font-weight: bold;
-
-    color: #ff4d4d;
-
-    text-align: center;
-
-    cursor: pointer;
-}
-
-
-.celebration-title {
-
-    animation:
-        celebrationBounce
-        0.6s
-        infinite
-        alternate;
-
-    text-shadow:
-        2px 4px 10px
-        rgba(0, 0, 0, 0.1);
-}
-
-
-.celebration-help {
-
-    font-size: 20px;
-
-    color: #666;
-
-    margin-top: 20px;
-}
-
-
-@keyframes celebrationBounce {
-
-    0% {
-        transform: translateY(0);
-    }
-
-    100% {
-        transform: translateY(-15px);
-    }
-}
-
-
-/* =========================================
-   🎊 紙吹雪
-========================================= */
-
-.particle {
-
-    position: absolute;
-
-    animation:
-        popEffect
-        1.5s
-        ease-out
-        forwards;
-
-    font-size: 40px;
-}
-
-
-@keyframes popEffect {
-
-    0% {
-
-        transform:
-            translate(0, 0)
-            rotate(0deg)
-            scale(0.5);
-
-        opacity: 1;
-    }
-
-    100% {
-
-        transform:
-            translate(var(--x), var(--y))
-            rotate(360deg)
-            scale(1.6);
-
-        opacity: 0;
-    }
-}
-
-
-/* =========================================
-   📖 記事ページ
-   宇宙背景を消して白くする
+   記事ページの背景
 ========================================= */
 
 body.article-view {
-
     background: #f6f9fb;
 }
 
-
 body.article-view #space-background {
-
     display: none;
 }
 
+/* =========================================
+   🌌 お気に入り機能・プレミアムデザイン
+========================================= */
+
+/* 共通設定 */
+.favorite-btn,
+.favorite-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 10px 16px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.4;
+
+    border: 1px solid rgba(125, 155, 210, 0.45);
+    border-radius: 999px;
+
+    color: #D8E5FF;
+    background: linear-gradient(
+        135deg,
+        #17294B,
+        #292052
+    );
+
+    box-shadow:
+        0 4px 14px rgba(20, 50, 110, 0.14);
+
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.2s ease;
+}
+
+/* ホバー */
+.favorite-btn:hover,
+.favorite-toggle-btn:hover {
+    transform: translateY(-2px);
+
+    border-color: #8DABFF;
+
+    box-shadow:
+        0 6px 18px rgba(74, 115, 230, 0.25),
+        0 0 12px rgba(110, 130, 255, 0.12);
+}
+
+/* 押した瞬間 */
+.favorite-btn:active,
+.favorite-toggle-btn:active {
+    transform: scale(0.96);
+}
+
+/* キーボード操作 */
+.favorite-btn:focus-visible,
+.favorite-toggle-btn:focus-visible {
+    outline: 3px solid #8BCBFF;
+    outline-offset: 3px;
+}
+
+/* 星・ハート */
+.favorite-btn .favorite-icon,
+.favorite-toggle-btn .favorite-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    color: #A9BDEB;
+    line-height: 1;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+/* 一覧画面の星 */
+.favorite-btn .favorite-icon {
+    font-size: 23px;
+}
+
+/* 詳細画面のハート */
+.favorite-toggle-btn .favorite-icon {
+    font-size: 25px;
+}
 
 /* =========================================
-   📱 スマホ対応
+   ⭐ 記事一覧のお気に入りボタン
+========================================= */
+
+.favorite-btn {
+    background: linear-gradient(
+        135deg,
+        #101D38,
+        #25204B
+    );
+}
+
+.favorite-btn .favorite-label {
+    color: #D8E5FF;
+}
+
+/* お気に入り登録済み */
+.favorite-btn.is-favorite {
+    color: #FFE0F0;
+
+    background: linear-gradient(
+        135deg,
+        #48204F,
+        #25265F
+    );
+
+    border-color: #E879C0;
+
+    box-shadow:
+        0 0 12px rgba(232, 100, 190, 0.18),
+        inset 0 0 10px rgba(255, 130, 210, 0.05);
+}
+
+.favorite-btn.is-favorite .favorite-icon {
+    color: #FF83CA;
+
+    text-shadow:
+        0 0 8px rgba(255, 105, 195, 0.55);
+
+    transform: scale(1.12);
+}
+
+.favorite-btn.is-favorite .favorite-label {
+    color: #FFD4EC;
+}
+
+.favorite-btn.is-favorite:hover {
+    border-color: #FF9BD7;
+
+    box-shadow:
+        0 0 18px rgba(232, 100, 190, 0.28);
+}
+
+/* =========================================
+   ❤️ 記事詳細画面のお気に入りボタン
+========================================= */
+
+.favorite-area {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    margin: 16px 0 28px;
+}
+
+.favorite-toggle-btn {
+    color: #526078;
+
+    background: linear-gradient(
+        135deg,
+        #FFFFFF,
+        #EEF3FF
+    );
+
+    border-color: #D5DDF0;
+
+    box-shadow:
+        0 4px 12px rgba(35, 55, 100, 0.08);
+}
+
+.favorite-toggle-btn .favorite-icon {
+    color: #8998B6;
+}
+
+.favorite-toggle-btn:hover {
+    background: linear-gradient(
+        135deg,
+        #FFFFFF,
+        #E7EDFF
+    );
+}
+
+/* 登録済み */
+.favorite-toggle-btn.is-favorite {
+    color: #A51F68;
+
+    background: linear-gradient(
+        135deg,
+        #FFF0F8,
+        #F9DDF0
+    );
+
+    border-color: #F0A0D0;
+
+    box-shadow:
+        0 4px 16px rgba(205, 70, 150, 0.14),
+        0 0 12px rgba(235, 110, 190, 0.08);
+}
+
+.favorite-toggle-btn.is-favorite .favorite-icon {
+    color: #E83E93;
+
+    text-shadow:
+        0 0 8px rgba(232, 62, 147, 0.3);
+
+    transform: scale(1.12);
+}
+
+.favorite-toggle-btn.is-favorite:hover {
+    border-color: #E66CB5;
+
+    box-shadow:
+        0 6px 20px rgba(205, 70, 150, 0.2);
+}
+
+/* =========================================
+   📱 スマートフォン対応
 ========================================= */
 
 @media (max-width: 600px) {
-
-    .main-header {
-
-        margin: 10px;
-
-        padding: 15px;
+    .favorite-area {
+        margin: 14px 0 22px;
     }
 
-
-    .main-header h1 {
-
-        font-size: 25px;
-
-        letter-spacing: 2px;
+    .favorite-btn,
+    .favorite-toggle-btn {
+        min-height: 44px;
+        padding: 9px 13px;
+        gap: 7px;
+        font-size: 13px;
     }
 
-
-    .main-header p.subtitle {
-
-        font-size: 11px;
-    }
-
-
-    .header-title-area {
-
-        margin-right: 10px;
-    }
-
-
-    .zatugaku-box {
-
-        padding: 20px;
-    }
-
-
-    .detail-page-content {
-
-        padding: 20px;
-    }
-
-
-    .quiz-options .more-btn {
-
-        width: 100%;
-    }
-
-
-    .celebration-title {
-
-        font-size: 30px;
-    }
-
-
-    .detail-page-content .detail-title {
-
+    .favorite-btn .favorite-icon {
         font-size: 22px;
     }
 
+    .favorite-toggle-btn .favorite-icon {
+        font-size: 24px;
+    }
+}
 
-    .nebula {
+/* =========================================
+   ♿ 動きを控えたい人への配慮
+========================================= */
 
-        width: 450px;
+@media (prefers-reduced-motion: reduce) {
+    .favorite-btn,
+    .favorite-toggle-btn,
+    .favorite-btn .favorite-icon,
+    .favorite-toggle-btn .favorite-icon {
+        transition: none;
+    }
+}
 
-        height: 450px;
+/* =========================================
+   📖 読んだ・未読マーク
+========================================= */
 
-        filter: blur(55px);
+.read-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    width: fit-content;
+    margin: 0 0 10px;
+    padding: 4px 10px;
+
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+.read-status.is-read {
+    color: #187548;
+    background-color: #e2f7eb;
+    border: 1px solid #b8e8cb;
+}
+
+.read-status.is-unread {
+    color: #52627a;
+    background-color: #edf2f8;
+    border: 1px solid #d9e2ee;
+}
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+    .read-status {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}
+
+/* =========================================
+   🚀 宇宙雑学・コズミック検索
+========================================= */
+
+.space-search {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0 28px;
+    padding: 25px;
+
+    color: #f1f6ff;
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(55, 120, 255, 0.24),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(8, 20, 48, 0.97),
+            rgba(17, 24, 58, 0.97)
+        );
+
+    border: 1px solid rgba(112, 170, 255, 0.55);
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.25),
+        0 0 22px rgba(48, 120, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.space-search::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+
+    width: 180px;
+    height: 180px;
+    top: -100px;
+    right: -55px;
+
+    border: 1px solid rgba(116, 170, 255, 0.2);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 18px rgba(116, 170, 255, 0.035),
+        0 0 0 38px rgba(116, 170, 255, 0.025);
+
+    pointer-events: none;
+}
+
+.search-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.search-orbit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 48px;
+    height: 48px;
+
+    color: #9ddcff;
+    font-size: 29px;
+
+    background: rgba(57, 130, 255, 0.14);
+    border: 1px solid rgba(125, 190, 255, 0.55);
+    border-radius: 50%;
+
+    box-shadow: 0 0 18px rgba(69, 155, 255, 0.18);
+}
+
+.search-eyebrow {
+    margin: 0 0 3px !important;
+    color: #8ecbff;
+    font-size: 10px !important;
+    font-weight: bold;
+    letter-spacing: 2.5px;
+}
+
+.search-heading h2 {
+    margin: 0 0 3px;
+    color: #ffffff;
+    font-size: 21px;
+    letter-spacing: 0.5px;
+}
+
+.search-description {
+    margin: 0 !important;
+    color: #c0d0ec;
+    font-size: 13px !important;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 54px;
+    padding: 6px 7px 6px 14px;
+
+    background: rgba(3, 10, 28, 0.88);
+    border: 1px solid rgba(112, 170, 255, 0.55);
+    border-radius: 11px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-form:focus-within {
+    border-color: #80caff;
+    box-shadow:
+        0 0 0 3px rgba(64, 153, 255, 0.15),
+        0 0 20px rgba(64, 153, 255, 0.12);
+}
+
+.search-icon {
+    flex-shrink: 0;
+    color: #8ecbff;
+    font-size: 29px;
+    line-height: 1;
+}
+
+.search-form input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+
+    padding: 9px 0;
+
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    font: inherit;
+    font-size: 14px;
+}
+
+.search-form input::placeholder {
+    color: #8e9fbd;
+    opacity: 1;
+}
+
+.search-form input::-webkit-search-cancel-button {
+    cursor: pointer;
+}
+
+.search-submit-btn {
+    flex-shrink: 0;
+
+    min-height: 40px;
+    padding: 8px 17px;
+
+    color: #ffffff;
+    background: linear-gradient(135deg, #3489f5, #6256dc);
+    border: 1px solid rgba(180, 210, 255, 0.45);
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 12px rgba(55, 110, 255, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.search-submit-btn:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+}
+
+.search-bottom {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin-top: 13px;
+
+    color: #b4c5e3;
+    font-size: 12px;
+}
+
+.search-status-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+
+    background: #65e4bb;
+    border-radius: 50%;
+
+    box-shadow: 0 0 8px rgba(101, 228, 187, 0.7);
+}
+
+.search-clear-btn {
+    margin-left: auto;
+    padding: 5px 9px;
+
+    color: #c8ddff;
+    background: rgba(83, 132, 205, 0.15);
+    border: 1px solid rgba(125, 170, 235, 0.3);
+    border-radius: 6px;
+
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.search-clear-btn:hover {
+    background: rgba(83, 132, 205, 0.3);
+}
+
+.search-clear-btn[hidden] {
+    display: none;
+}
+
+.search-message {
+    margin: 8px 0 0 !important;
+    color: #b9dcff;
+    font-size: 13px !important;
+}
+
+.search-message:empty {
+    display: none;
+}
+
+/* 検索結果が0件のとき */
+.search-empty {
+    padding: 25px 15px;
+    color: #e6edff;
+    text-align: center;
+    background: rgba(13, 27, 57, 0.96);
+    border: 1px solid rgba(112, 170, 255, 0.35);
+    border-radius: 12px;
+}
+
+.search-empty p {
+    color: #c0d0ec;
+}
+
+/* スマートフォン */
+@media (max-width: 600px) {
+    .space-search {
+        padding: 19px 15px;
+        border-radius: 14px;
     }
 
-
-    .space-glow {
-
-        width: 180px;
-
-        height: 180px;
+    .search-heading {
+        gap: 11px;
     }
 
-
-    /* スマホでは本文の行間を少し調整 */
-
-    .detail-text {
-
-        line-height: 1.9;
-
-        overflow-wrap: anywhere;
+    .search-orbit {
+        width: 41px;
+        height: 41px;
+        font-size: 24px;
     }
 
-
-    .detail-text p {
-
-        margin-bottom: 16px;
+    .search-heading h2 {
+        font-size: 18px;
     }
 
-
-    .red-marker {
-
-        margin-top: 0.6em;
-
-        margin-bottom: 0.6em;
+    .search-form {
+        gap: 7px;
+        padding-left: 10px;
     }
 
+    .search-form input {
+        font-size: 13px;
+    }
+
+    .search-submit-btn {
+        padding: 8px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .search-form,
+    .search-submit-btn {
+        transition: none;
+    }
+}
+
+/* 記事詳細画面の画像 */
+.detail-image {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+/* 画像がない記事では非表示 */
+.detail-image[hidden] {
+    display: none;
+}
+/* 記事一覧のサムネイル */
+.article-thumbnail {
+    width: 120px;
+    height: 90px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(160, 140, 255, 0.35);
+    box-shadow: 0 0 12px rgba(120, 90, 255, 0.12);
+}
+
+/* 記事一覧の横並びレイアウト */
+.article-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* タイトルなどの情報欄 */
+.article-info-area {
+    flex: 1;
+    min-width: 0;
+}
+
+/* スマホでは画像を少し小さくする */
+@media (max-width: 480px) {
+    .article-thumbnail {
+        width: 90px;
+        height: 72px;
+    }
+
+    .article-top {
+        gap: 12px;
+    }
+}
+
+/* ========================================
+   記事一覧：左側の写真
+   ======================================== */
+
+.article-thumbnail {
+    display: block;
+    flex: 0 0 150px;
+    width: 150px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(140, 170, 255, 0.35);
+    box-shadow: 0 4px 18px rgba(35, 80, 180, 0.2);
+}
+
+/* スマートフォンでは少し小さくする */
+@media (max-width: 600px) {
+    .article-thumbnail {
+        flex-basis: 112px;
+        width: 112px;
+        height: 140px;
+    }
+}
+/* 画像の出典表記 */
+.detail-image-credit {
+    max-width: 800px;
+    margin: -10px auto 24px;
+    padding: 9px 12px;
+    box-sizing: border-box;
+
+    border-left: 3px solid #7c8ca5;
+    border-radius: 0 6px 6px 0;
+    background: #f1f4f8;
+
+    color: #465266;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.detail-image-credit[hidden] {
+    display: none;
+}
+
+.detail-image-credit a {
+    color: #245da8;
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
