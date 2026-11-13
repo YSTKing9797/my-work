@@ -1966,3 +1966,23 @@ body.article-view #space-background {
 #celebration-overlay {
     display: none !important;
 }
+/* 難易度表示 */
+.article-difficulty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 難易度の文字 */
+.article-difficulty {
+    color: #d6a83e;
+}
+
+/* 星の色 */
+.article-difficulty {
+    letter-spacing: 2px;
+    color: #e5ad32;
+}

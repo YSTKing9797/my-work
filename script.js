@@ -639,7 +639,17 @@ readStatus.textContent = isRead(article.id)
     : '未読';
 
 
-        const title = document.createElement('h2');
+    // 難易度表示
+const difficulty = document.createElement('div');
+difficulty.className = 'article-difficulty';
+
+const level = Math.min(5, Math.max(1, Number(article.difficulty) || 1));
+
+const labels = ['入門', '初級', '標準', '上級', '発展'];
+const stars = '★'.repeat(level) + '☆'.repeat(5 - level);
+
+difficulty.textContent = `${labels[level - 1]}　${stars}`;    
+    const title = document.createElement('h2');
         title.textContent = article.title;
 
         const summary = document.createElement('p');
@@ -666,14 +676,14 @@ readStatus.textContent = isRead(article.id)
 
         buttonWrapper.appendChild(moreButton);
         actions.appendChild(buttonWrapper);
+info.appendChild(episode);
+info.appendChild(readStatus);
+info.appendChild(difficulty);
+info.appendChild(title);
+info.appendChild(summary);
+info.appendChild(actions);
 
-        info.appendChild(episode);
-        info.appendChild(readStatus);
-        info.appendChild(title);
-        info.appendChild(summary);
-        info.appendChild(actions);
-
-        top.appendChild(info);
+top.appendChild(info);
         box.appendChild(top);
 
         articleList.appendChild(box);
